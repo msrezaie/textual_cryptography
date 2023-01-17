@@ -1,8 +1,79 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
-<h2>Hi, I am {{profile.full_name}}</h2>
-<p>{{profile.short_bio}}</p>
-<p>Based in {{profile.location}}</p>
+
+<!-- Main Section -->
+<main class="profile my-md">
+    <div class="container">
+        <div class="layout">
+            <div class="column column--1of3">
+                <div class="card text-center">
+                    <div class="card__body dev">
+                        <img class="avatar avatar--lg" src="{{profile.profile_image.url}}" />
+                        <h2 class="dev__name">Hi, I am {{profile.full_name}}</h2>
+                        <p class="dev__title">{{profile.short_bio}}</p>
+                        <p class="dev__location">Based in {{profile.location}}</p>
+                        <ul class="dev__social">
+
+                            {% if profile.social_github %}
+                            <li>
+                                <a title="Github" href="{{profile.social_github}}" target="_blank">#<i
+                                        class="im im-github"></i></a>
+                            </li>
+                            {% endif %}
+
+                            {% comment %} <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class="social fab fa-linkedin"></i></a></li>
+                            <li><a href="https://github.com/msrezaie"><i class="social fab fa-github"></i></a></li> {% endcomment %}
+
+                            {% if profile.social_linkedin %}
+                            <li>
+                                <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">#<i
+                                        class="im im-linkedin"></i></a>
+                            </li>
+                            {% endif %}
+
+                        </ul>
+                        {% comment %} {% if request.user.profile.id != profile.id %}
+                        <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
+                        {% endif %} {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="column column--3of3">
+                <div class="devInfo">
+                    <h3 class="devInfo__title">Projects</h3>
+                    <div class="grid grid--three">
+                        
+                        {% for project in projects %}
+                        <div class="column">
+                            <div class="card project">
+                                <a href="{% url 'project' project.id %}" class="project">
+                                    <img class="project__thumbnail" src="{{project.featured_image.url}}"
+                                        alt="project thumbnail" />
+                                    <div class="card__body">
+                                        <h3 class="project__title">{{project.title}}</h3>
+                                        <div class="project__tags">
+
+                                            {% for tag in project.tags.all %}
+                                            <span class="tag tag--pill tag--main">
+                                                <small>{{tag}}</small>
+                                            </span>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 {% endblock content %}
