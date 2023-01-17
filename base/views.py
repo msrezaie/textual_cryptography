@@ -8,7 +8,7 @@ def home(request):
     topSkills = profile.skill_set.exclude(description__exact="")
     otherSkills = profile.skill_set.filter(description="")
     context = {'projects': projects, 'profile': profile, 'topSkills': topSkills, 'otherSkills': otherSkills}
-    return render(request, 'base\home.html', context)
+    return render(request, "base/landing.html", context)
 
 def project_detail(request, pk):
     projectObj = Project.objects.get(id=pk)
