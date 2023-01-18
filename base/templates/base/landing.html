@@ -37,38 +37,8 @@
                         {% comment %} {% if request.user.profile.id != profile.id %}
                         <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
                         {% endif %} {% endcomment %}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="column column--3of3">
-                <div class="devInfo">
-                    <h3 class="devInfo__title">Projects</h3>
-                    <div class="grid grid--three">
-                        
-                        {% for project in projects %}
-                        <div class="column">
-                            <div class="card project">
-                                <a href="{% url 'project' project.id %}" class="project">
-                                    <img class="project__thumbnail" src="{{project.featured_image.url}}"
-                                        alt="project thumbnail" />
-                                    <div class="card__body">
-                                        <h3 class="project__title">{{project.title}}</h3>
-                                        <div class="project__tags">
-
-                                            {% for tag in project.tags.all %}
-                                            <span class="tag tag--pill tag--main">
-                                                <small>{{tag}}</small>
-                                            </span>
-                                            {% endfor %}
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        {% endfor %}
-
+                        <a href="{% url 'portfolio' %}" class="btn btn--sub btn--lg">Go to Projects</a>
+                        <a href="" class="btn btn--sub btn--lg">Contact</a>
                     </div>
                 </div>
             </div>
