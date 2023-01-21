@@ -2,48 +2,96 @@
 {% load static %}
 
 {% block content %}
-
-<!-- Main Section -->
-<main class="profile my-md">
+<div class="d-flex justify-content-center">
     <div class="container">
-        <div class="layout">
-            <div class="column column--1of3">
-                <div class="card text-center">
-                    <div class="card__body dev">
-                        <img class="avatar avatar--lg" src="{{profile.profile_image.url}}" />
-                        <h2 class="dev__name">Hi, I am {{profile.full_name}}</h2>
-                        <p class="dev__title">{{profile.short_bio}}</p>
-                        <p class="dev__location">Based in {{profile.location}}</p>
-                        <ul class="dev__social">
+        <div class="profileCard">
+            <p>hello world</p>
+        </div>
+    </div>
+</div>
 
-                            {% if profile.social_github %}
-                            <li>
-                                <a title="Github" href="{{profile.social_github}}" target="_blank">#<i
-                                        class="im im-github"></i></a>
-                            </li>
-                            {% endif %}
-
-                            {% comment %} <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class="social fab fa-linkedin"></i></a></li>
-                            <li><a href="https://github.com/msrezaie"><i class="social fab fa-github"></i></a></li> {% endcomment %}
-
-                            {% if profile.social_linkedin %}
-                            <li>
-                                <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">#<i
-                                        class="im im-linkedin"></i></a>
-                            </li>
-                            {% endif %}
-
-                        </ul>
-                        {% comment %} {% if request.user.profile.id != profile.id %}
-                        <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
-                        {% endif %} {% endcomment %}
-                        <a href="{% url 'portfolio' %}" class="btn btn--sub btn--lg">Go to Projects</a>
-                        <a href="" class="btn btn--sub btn--lg">Contact</a>
+<!-- Profile Card Section -->
+<main class="profile my-md mx-md">
+    <div class="container">
+        <div class="">
+            <div class="">
+                <div class="">
+                    <div class="card text-center">
+                        <div class="card__body dev">
+                            <img class="avatar avatar--lg" src="{{profile.profile_image.url}}" />
+                            <h2 class="dev__name">Hi, I am {{profile.full_name}}</h2>
+                            <p class="dev__title">{{profile.short_bio}}</p>
+                            <p class="dev__location">Based in {{profile.location}}</p>
+                            <ul class="dev__social">
+    
+                                {% if profile.social_github %}
+                                <li>
+                                    <a title="Github" href="{{profile.social_github}}" target="_blank">GitHub<i
+                                            class="im im-github"></i></a>
+                                </li>
+                                {% endif %}
+    
+                                {% comment %} <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class="social fab fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/msrezaie"><i class="social fab fa-github"></i></a></li> {% endcomment %}
+    
+                                {% if profile.social_linkedin %}
+                                <li>
+                                    <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">LinkedIn<i
+                                            class="im im-linkedin"></i></a>
+                                </li>
+                                {% endif %}
+    
+                            </ul>
+                            {% comment %} {% if request.user.profile.id != profile.id %}
+                            <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
+                            {% endif %} {% endcomment %}
+                            <a href="{% url 'home' %}" class="btn btn--sub btn--lg">Go to Projects</a>
+                            <a href="" class="btn btn--sub btn--lg">Contact</a>
+                        </div>
                     </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</main>
+
+<!-- Projects Section -->
+<div class="container">
+    <div class="layout">
+        <div class="column column--3of3">
+            <div class="devInfo">
+                <h3 class="devInfo__title">Projects</h3>
+                <div class="grid grid--three">
+                    
+                    {% for project in projects %}
+                    <div class="column">
+                        <div class="card project">
+                            <a href="{% url 'project' project.id %}" class="project">
+                                <img class="project__thumbnail" src="{{project.featured_image.url}}"
+                                    alt="project thumbnail" />
+                                <div class="card__body">
+                                    <h3 class="project__title">{{project.title}}</h3>
+                                    <div class="project__tags">
+
+                                        {% for tag in project.tags.all %}
+                                        <span class="tag tag--pill tag--main">
+                                            <small>{{tag}}</small>
+                                        </span>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
+
+<!-- Contact Section -->
 
 {% endblock content %}

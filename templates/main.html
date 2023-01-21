@@ -1,24 +1,22 @@
 {% load static %}
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Favicon -->
-    {% comment %} <link rel="shortcut icon" href="" type="image/x-icon" /> {% endcomment %}
-    <!-- Icon - IconMonster -->
-    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
-    <!-- Mumble UI -->
-    <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
-    <!-- Dev Search UI -->
-    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
-    <title>Mo Rezaie</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/76d03bfb37.js"></script>
+    <title>MyPortfolio</title>
 </head>
-<body style="background-image: url({% static 'images/bg.png' %}); background-size: 950px;">
+<body style="background-image: url({% static 'images/bg.png' %}); background-size: 990px;">
+    
+    {% include 'nav.html' %}
+
     {% block content %}
     
     {% endblock content %}
+
+<!-- Footer Section -->
+
 </body>
 </html>
