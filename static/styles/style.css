@@ -15,6 +15,7 @@ main{
   padding: 10px 30px;
 }
 
+/* NAVBAR STYLING */
 .navbar{
   position: fixed;
   z-index: 5;
@@ -26,6 +27,7 @@ main{
 .navbar.sticky{
   background-color: #1b1b1b;
   padding: 15px 20px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
 
 .navbar.sticky li a{
@@ -35,7 +37,6 @@ main{
 .navbar.sticky .logo a{
   color: white;
 }
-
 
 .navbar .content{
   display: flex;
@@ -127,4 +128,35 @@ no space: css for an element with more than 1 class/tag */
   .icon{
     display: block;
   }
+}
+
+/* END NAVBAR STYLING */
+
+/* FOOTER STYLING */
+.footer-card{
+  position: static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px 40px;
+  box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 1.5), 
+           inset 10px 10px 15px rgba(70, 70, 70, 0.12);
+}
+
+.footer-card .content{
+  text-align: center;
+}
+
+.footer-card .social-list{
+  display: inline-flex;
+}
+
+.footer-card li{
+  list-style: none;
+  padding: 10px 10px;
+}
+
+.social-list i{
+  color: #1b1b1b;
 }
