@@ -2,13 +2,6 @@
 {% load static %}
 
 {% block content %}
-<div class="d-flex justify-content-center">
-    <div class="container">
-        <div class="profileCard">
-            <p>hello world</p>
-        </div>
-    </div>
-</div>
 
 <!-- Profile Card Section -->
 <main class="profile my-md mx-md">
@@ -51,47 +44,47 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
-</main>
 
-<!-- Projects Section -->
-<div class="container">
-    <div class="layout">
-        <div class="column column--3of3">
-            <div class="devInfo">
-                <h3 class="devInfo__title">Projects</h3>
-                <div class="grid grid--three">
-                    
-                    {% for project in projects %}
-                    <div class="column">
-                        <div class="card project">
-                            <a href="{% url 'project' project.id %}" class="project">
-                                <img class="project__thumbnail" src="{{project.featured_image.url}}"
-                                    alt="project thumbnail" />
-                                <div class="card__body">
-                                    <h3 class="project__title">{{project.title}}</h3>
-                                    <div class="project__tags">
+    <!-- Projects Section -->
+    <div class="container">
+        <div class="layout">
+            <div class="column column--3of3">
+                <div class="devInfo">
+                    <h3 class="devInfo__title">Projects</h3>
+                    <div class="grid grid--three">
+                        
+                        {% for project in projects %}
+                        <div class="column">
+                            <div class="card project">
+                                <a href="{% url 'project' project.id %}" class="project">
+                                    <img class="project__thumbnail" src="{{project.featured_image.url}}"
+                                        alt="project thumbnail" />
+                                    <div class="card__body">
+                                        <h3 class="project__title">{{project.title}}</h3>
+                                        <div class="project__tags">
 
-                                        {% for tag in project.tags.all %}
-                                        <span class="tag tag--pill tag--main">
-                                            <small>{{tag}}</small>
-                                        </span>
-                                        {% endfor %}
+                                            {% for tag in project.tags.all %}
+                                            <span class="tag tag--pill tag--main">
+                                                <small>{{tag}}</small>
+                                            </span>
+                                            {% endfor %}
 
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Contact Section -->
+    <!-- Contact Section -->
+</main>
+
 
 {% endblock content %}

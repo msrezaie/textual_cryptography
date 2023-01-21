@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/76d03bfb37.js"></script>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
     <title>MyPortfolio</title>
 </head>
 <body style="background-image: url({% static 'images/bg.png' %}); background-size: 990px;">
     
-    {% include 'nav.html' %}
+    {% include 'navbar.html' %}
 
     {% block content %}
     
