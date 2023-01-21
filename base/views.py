@@ -14,9 +14,3 @@ def project_detail(request, pk):
     projectObj = Project.objects.get(id=pk)
     tags = projectObj.tags.all()
     return render(request, 'base\project_detail.html', {'project': projectObj, 'tags': tags})
-
-def contact(request):
-    return render(request, "base/contact.html")
-
-def about(request):
-    return render(request, "base/about.html")
