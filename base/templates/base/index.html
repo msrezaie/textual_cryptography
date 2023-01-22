@@ -4,45 +4,49 @@
 {% block profileCard %}
 
 <main>
-    <div class="container">
-        <div class="">
-            <div class="">
-                <div class="">
-                    <div class="card text-center">
-                        <div class="card__body dev">
-                            <img class="avatar avatar--lg" src="{{profile.profile_image.url}}" />
-                            <h2 class="dev__name">Hi, I am {{profile.full_name}}</h2>
-                            <p class="dev__title">{{profile.short_bio}}</p>
-                            <p class="dev__location">Based in {{profile.location}}</p>
-                            <ul class="dev__social">
-
-                                {% if profile.social_github %}
-                                <li>
-                                    <a title="Github" href="{{profile.social_github}}" target="_blank">GitHub<i
-                                            class=""></i></a>
-                                </li>
-                                {% endif %}
-
-                                {% comment %} <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class=""></i></a></li>
-                                <li><a href="https://github.com/msrezaie"><i class=""></i></a></li> {% endcomment %}
-
-                                {% if profile.social_linkedin %}
-                                <li>
-                                    <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">LinkedIn<i
-                                            class=""></i></a>
-                                </li>
-                                {% endif %}
-
-                            </ul>
-                            
-                            <a href="{% url 'index' %}" class="btn btn--sub btn--lg">Go to Projects</a>
-                            <a href="" class="btn btn--sub btn--lg">Contact</a>
-                        </div>
-                    </div>
+    <div class="row-xs">
+        <div class="col">
+            <div class="profile-card">
+                <div class="content">
+                    <img src="{{profile.profile_image.url}}" alt="" class="profile-image">
+                    <div class="profile-name">Hi I am {{profile.full_name}}.</div>
+                    <div class="profile-title">Prospect Software Developer</div>
+                    <div class="profile-detail">I like to code in Python</div>    
                 </div>
             </div>
         </div>
     </div>
+    {% comment %} <div class="container">
+        <div class="card__body dev">
+            <img class="avatar avatar--lg" src="" />
+            <h2 class="dev__name">Hi, I am </h2>
+            <p class="dev__title">{{profile.short_bio}}</p>
+            <p class="dev__location">Based in {{profile.location}}</p>
+            <ul class="dev__social">
+
+                {% if profile.social_github %}
+                <li>
+                    <a title="Github" href="{{profile.social_github}}" target="_blank">GitHub<i
+                            class=""></i></a>
+                </li>
+                {% endif %}
+
+                <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class=""></i></a></li>
+                <li><a href="https://github.com/msrezaie"><i class=""></i></a></li>
+
+                {% if profile.social_linkedin %}
+                <li>
+                    <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">LinkedIn<i
+                            class=""></i></a>
+                </li>
+                {% endif %}
+
+            </ul>
+            
+            <a href="{% url 'index' %}" class="btn btn--sub btn--lg">Go to Projects</a>
+            <a href="" class="btn btn--sub btn--lg">Contact</a>
+        </div>
+    </div> {% endcomment %}
 </main>
 
 {% endblock profileCard %}
