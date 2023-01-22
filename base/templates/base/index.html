@@ -1,10 +1,9 @@
-{% extends 'main.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block profileCard %}
 
-<!-- Profile Card Section -->
-<main class="profile my-md mx-md">
+<main>
     <div class="container">
         <div class="">
             <div class="">
@@ -16,29 +15,27 @@
                             <p class="dev__title">{{profile.short_bio}}</p>
                             <p class="dev__location">Based in {{profile.location}}</p>
                             <ul class="dev__social">
-    
+
                                 {% if profile.social_github %}
                                 <li>
                                     <a title="Github" href="{{profile.social_github}}" target="_blank">GitHub<i
-                                            class="im im-github"></i></a>
+                                            class=""></i></a>
                                 </li>
                                 {% endif %}
-    
-                                {% comment %} <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class="social fab fa-linkedin"></i></a></li>
-                                <li><a href="https://github.com/msrezaie"><i class="social fab fa-github"></i></a></li> {% endcomment %}
-    
+
+                                {% comment %} <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class=""></i></a></li>
+                                <li><a href="https://github.com/msrezaie"><i class=""></i></a></li> {% endcomment %}
+
                                 {% if profile.social_linkedin %}
                                 <li>
                                     <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">LinkedIn<i
-                                            class="im im-linkedin"></i></a>
+                                            class=""></i></a>
                                 </li>
                                 {% endif %}
-    
+
                             </ul>
-                            {% comment %} {% if request.user.profile.id != profile.id %}
-                            <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
-                            {% endif %} {% endcomment %}
-                            <a href="{% url 'home' %}" class="btn btn--sub btn--lg">Go to Projects</a>
+                            
+                            <a href="{% url 'index' %}" class="btn btn--sub btn--lg">Go to Projects</a>
                             <a href="" class="btn btn--sub btn--lg">Contact</a>
                         </div>
                     </div>
@@ -46,15 +43,19 @@
             </div>
         </div>
     </div>
+</main>
 
-    <!-- Projects Section -->
+{% endblock profileCard %}
+
+{% block projectsCard %}
+
+<main>
     <div class="container">
         <div class="layout">
             <div class="column column--3of3">
                 <div class="devInfo">
                     <h3 class="devInfo__title">Projects</h3>
                     <div class="grid grid--three">
-                        
                         {% for project in projects %}
                         <div class="column">
                             <div class="card project">
@@ -82,9 +83,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Contact Section -->
 </main>
 
-
-{% endblock content %}
+{% endblock projectsCard %}
