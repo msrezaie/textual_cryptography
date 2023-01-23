@@ -4,14 +4,16 @@
 {% block profileCard %}
 
 <main>
-    <div class="row-xs">
-        <div class="col">
-            <div class="profile-card">
-                <div class="content">
-                    <img src="{{profile.profile_image.url}}" alt="" class="profile-image">
-                    <div class="profile-name">Hi I am {{profile.full_name}}.</div>
-                    <div class="profile-title">Prospect Software Developer</div>
-                    <div class="profile-detail">I like to code in Python</div>    
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="profile-card">
+                    <div class="content">
+                        <img src="{{profile.profile_image.url}}" alt="" class="profile-image">
+                        <div class="profile-name">Hi I am {{profile.full_name}}.</div>
+                        <div class="profile-title">Prospect Software Developer</div>
+                        <div class="profile-detail">I like to code in Python</div>    
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,15 +56,15 @@
 {% block projectsCard %}
 
 <main>
-    <div class="container">
-        <div class="layout">
-            <div class="column column--3of3">
-                <div class="devInfo">
-                    <h3 class="devInfo__title">Projects</h3>
-                    <div class="grid grid--three">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">
+                    <h3 class="">Projects</h3>
+                    <div class="">
                         {% for project in projects %}
-                        <div class="column">
-                            <div class="card project">
+                        <div class="">
+                            <div class="">
                                 <a href="{% url 'project' project.id %}" class="project">
                                     <img class="project__thumbnail" src="{{project.featured_image.url}}"
                                         alt="project thumbnail" />
