@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
+/* HTML STYLING */
 *{
   margin: 0;
   padding: 0;
@@ -7,30 +7,23 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body{
-  margin-top: 20vh;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-main{
-  padding: 10px 30px;
+body{
+  margin-top: 5vh;
 }
+/* HTML STYLING END */
 
-/* NAVBAR STYLING */
+/* NAVBAR STYLING START */
 .navbar{
-  margin-top: -20vh;
-  position: fixed;
-  z-index: 5;
-  width: 100%;
-  padding: 20px 40px;
+  padding: 20px 30px;
   transition: all 0.4s ease;
 }
 
 .navbar.sticky{
-  background-color: #1b1b1b;
+  background-color: #14133d;
   padding: 15px 20px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
@@ -43,41 +36,25 @@ main{
   color: white;
 }
 
-.navbar .content{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar .logo a{
-  color: black;
-  font-size: 30px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.navbar .menu-list{
-  display: inline-flex;
-}
-
 .menu-list li{
-  list-style: none;
+  padding: 0px 10px;
 }
 
 .menu-list li a{
   color: black;
-  margin-left: 40px;
   font-size: 18px;
-  text-decoration: none; 
-  transition: all 0.4s ease;
+}
+  
+.menu-list li a:hover{
+  color: silver;
 }
 
-.menu-list li a:hover{
-  color: gray;
+.navbar .logo a{
+  color: black;
+  font-size: 28px;
 }
 
 .icon{
-  color: black;
   font-size: 20px;
   cursor: pointer;
   display: none;
@@ -87,10 +64,6 @@ main{
   color: white;
 }
 
-/* with space: each class/tag 
-has to be inside the parent of the preceding 
-class/tag in here for it to take effect 
-no space: css for an element with more than 1 class/tag */
 .icon.cancel-btn{
   position: absolute;
   right: 30px;
@@ -98,24 +71,43 @@ no space: css for an element with more than 1 class/tag */
 }
 
 /* unless the screen width is at least ...px, do not display */
-@media (max-width: 668px) {
+@media (max-width: 868px) {
   .navbar .menu-list{
     position: fixed;
-    top: 0%;
+    top: 1%;
     right: -100%;
     height: 100vh;
     width: 100%;
     max-width: 240px;
     max-height: 300px;
     display: block;
-    padding: 40px 0;
+    padding: 15px 0;
     text-align: center;
-    background-color: white;
-    transition: all 0.4s ease;
+    background-color: #14133d;
+    transition: all 0.2s ease;
   }
-  
-  .navbar.sticky .menu-list{
-    background-color: #1b1b1b;
+
+  .icon{
+    color: black;
+    display: block;
+  }
+
+  .icon.hide{
+    display: none;
+  }
+
+  .navbar.active{
+    background-color: #14133d;
+    transition: all 0.2s ease;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+  }
+
+  .navbar.active .icon{
+    color: white;
+  }
+
+  .navbar.active .logo a{
+    color: white;
   }
 
   .navbar .menu-list.active{
@@ -123,18 +115,19 @@ no space: css for an element with more than 1 class/tag */
   }
 
   .navbar .menu-list li{
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .navbar .menu-list li a{
+    color: white;
     margin-left: 0px;
   }
-
-  .icon{
-    display: block;
+  
+  .menu-list li a:hover{
+    color: silver;
   }
 }
-/* END NAVBAR STYLING */
+/* NAVBAR STYLING END */
 
 /* FOOTER STYLING */
 .footer-card{
@@ -161,26 +154,121 @@ no space: css for an element with more than 1 class/tag */
   padding: 10px 10px;
 }
 
-.social-list i{
-  color: #1b1b1b;
+.social-list a{
+  color: #14133d;
 }
-/* END FOOTER STYLING */
 
-/* PROFILE CARD STYLING */
+.social-list a:hover{
+  color: silver;
+}
+/* FOOTER STYLING END */
+
+/* PROFILE-CARD STYLING */
 .profile-card{
-  background-color: azure;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 80px 0;
+}
+
+.card{
+  width: 400px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+  /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
+}
+
+.img1 img{
   width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 500px;
-  padding: 20px;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
+}
+
+.img2 img{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 7px solid whitesmoke;
+  margin-top: -90px;
+}
+
+.profile-name{
+  padding: 10px 0;
   text-align: center;
 }
 
-.profile-image{
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
+.profile-name h2{
+  font-weight: 600;
+  font-size: 18px;
 }
+
+.profile-title{
+  font-size: 18px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.profile-location{
+  font-size: 16px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.profile-socials{
+  text-align: center;
+  padding: 30px 0;
+}
+
+.profile-socials a{
+  color: #14133d;
+  padding: 0 5px;
+}
+
+.profile-socials a:hover{
+  transition: all 0.2s ease;
+  color: silver;
+}
+
+.profile-btns{
+  display: inline-flex;
+  padding: 5px 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-btn-proj{
+  padding: 0 10px;
+}
+
+.profile-btn-cont{
+  padding: 0 10px;
+}
+
+.profile-btn-proj button{
+  color: white;
+  background-color: #14133d;
+}
+
+.profile-btn-cont button{
+  color: white;
+  background-color: #14133d;
+}
+
+.profile-btn-proj button:hover{
+  background-color: silver;
+}
+
+.profile-btn-cont button:hover{
+  background-color: silver;
+}
+/* PROFILE-CARD STYLING END */

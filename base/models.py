@@ -10,6 +10,7 @@ class Profile(models.Model):
     short_bio = models.CharField(max_length=200, null= True, blank=True)
     location = models.CharField(max_length=200, null= True, blank=True)
     profile_image = models.ImageField(null=True, blank=True, default="no-image.jpg")
+    profile_background = models.ImageField(null=True, blank=True, default="no-image.jpg")
     social_github = models.CharField(max_length=200, null= True, blank=True)
     social_linkedin = models.CharField(max_length=200, null= True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,

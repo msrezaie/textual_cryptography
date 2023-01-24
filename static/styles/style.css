@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
+/* HTML STYLING */
 *{
   margin: 0;
   padding: 0;
@@ -12,18 +12,18 @@ html {
 }
 
 body{
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
+/* HTML STYLING END */
 
-/* Navbar Styling Start */
-
+/* NAVBAR STYLING START */
 .navbar{
   padding: 20px 30px;
   transition: all 0.4s ease;
 }
 
 .navbar.sticky{
-  background-color: #1b1b1b;
+  background-color: #14133d;
   padding: 15px 20px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 }
@@ -43,6 +43,7 @@ body{
 .menu-list li a{
   color: black;
   font-size: 18px;
+  font-weight: 400;
 }
   
 .menu-list li a:hover{
@@ -70,6 +71,7 @@ body{
   top: 20px;
 }
 
+/* unless the screen width is at least ...px, do not display */
 @media (max-width: 868px) {
   .navbar .menu-list{
     position: fixed;
@@ -82,7 +84,7 @@ body{
     display: block;
     padding: 15px 0;
     text-align: center;
-    background-color: #1b1b1b;
+    background-color: #14133d;
     transition: all 0.2s ease;
   }
 
@@ -96,7 +98,7 @@ body{
   }
 
   .navbar.active{
-    background-color: #1b1b1b;
+    background-color: #14133d;
     transition: all 0.2s ease;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
   }
@@ -114,7 +116,9 @@ body{
   }
 
   .navbar .menu-list li{
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
   }
 
   .navbar .menu-list li a{
@@ -126,8 +130,7 @@ body{
     color: silver;
   }
 }
-
-/* Navbar Styling End */
+/* NAVBAR STYLING END */
 
 /* FOOTER STYLING */
 .footer-card{
@@ -154,27 +157,121 @@ body{
   padding: 10px 10px;
 }
 
-.social-list i{
-  color: #1b1b1b;
+.social-list a{
+  color: #14133d;
 }
-/* END FOOTER STYLING */
 
-/* PROFILE CARD STYLING */
+.social-list a:hover{
+  color: silver;
+}
+/* FOOTER STYLING END */
+
+/* PROFILE-CARD STYLING */
 .profile-card{
-  background-color: azure;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 500px;
-  padding: 20px;
-  text-align: center;
-  border-radius: 2%;
+  padding: 80px 0;
 }
 
-.profile-image{
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
+.card{
+  width: 400px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+  /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
 }
+
+.img1 img{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
+}
+
+.img2 img{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 7px solid whitesmoke;
+  margin-top: -90px;
+}
+
+.profile-name{
+  padding: 10px 0;
+  text-align: center;
+}
+
+.profile-name h2{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.profile-title{
+  font-size: 18px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.profile-location{
+  font-size: 16px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.profile-socials{
+  text-align: center;
+  padding: 30px 0;
+}
+
+.profile-socials a{
+  color: #14133d;
+  padding: 0 5px;
+}
+
+.profile-socials a:hover{
+  transition: all 0.2s ease;
+  color: silver;
+}
+
+.profile-btns{
+  display: inline-flex;
+  padding: 5px 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-btn-proj{
+  padding: 0 10px;
+}
+
+.profile-btn-cont{
+  padding: 0 10px;
+}
+
+.profile-btn-proj button{
+  color: white;
+  background-color: #14133d;
+}
+
+.profile-btn-cont button{
+  color: white;
+  background-color: #14133d;
+}
+
+.profile-btn-proj button:hover{
+  background-color: silver;
+}
+
+.profile-btn-cont button:hover{
+  background-color: silver;
+}
+/* PROFILE-CARD STYLING END */
