@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 /* HTML STYLING */
 *{
   margin: 0;
@@ -11,9 +12,9 @@ html {
   scroll-behavior: smooth;
 }
 
-body{
+/* body{
   margin-top: 5vh;
-}
+} */
 /* HTML STYLING END */
 
 /* NAVBAR STYLING START */
@@ -132,43 +133,20 @@ body{
 }
 /* NAVBAR STYLING END */
 
-/* FOOTER STYLING */
-.footer-card{
-  position: static;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
-  padding: 20px 40px;
-  box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 1.5), 
-           inset 10px 10px 15px rgba(70, 70, 70, 0.12);
+/* BANNER STYLING */
+.banner{
+  height: 100vh;
+  background-image: url("/static/images/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* background-size: 990px; */
 }
-
-.footer-card .content{
-  text-align: center;
-}
-
-.footer-card .social-list{
-  display: inline-flex;
-}
-
-.footer-card li{
-  list-style: none;
-  padding: 10px 10px;
-}
-
-.social-list a{
-  color: #14133d;
-}
-
-.social-list a:hover{
-  color: silver;
-}
-/* FOOTER STYLING END */
+/* BANNER STYLING END */
 
 /* PROFILE-CARD STYLING */
 .profile-card{
-  padding: 80px 0;
+  padding: 150px 0 0 0;
 }
 
 .card{
@@ -275,3 +253,37 @@ body{
   background-color: silver;
 }
 /* PROFILE-CARD STYLING END */
+
+/* FOOTER STYLING */
+.footer-card{
+  position: static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px 40px;
+  box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 1.5), 
+           inset 10px 10px 15px rgba(70, 70, 70, 0.12);
+}
+
+.footer-card .content{
+  text-align: center;
+}
+
+.footer-card .social-list{
+  display: inline-flex;
+}
+
+.footer-card li{
+  list-style: none;
+  padding: 10px 10px;
+}
+
+.social-list a{
+  color: #14133d;
+}
+
+.social-list a:hover{
+  color: silver;
+}
+/* FOOTER STYLING END */

@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+import os
+
+class Page(models.Model):
+    landing_page_background = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return os.path.basename(self.landing_page_background.name)
 
 
 class Profile(models.Model):

@@ -1,42 +1,31 @@
 {% extends 'index.html' %}
 {% load static %}
 
-{% block profileCard %}
+{% block banner-profile %}
 
-{% comment %} {% if profile.social_github %}
-                <li>
-                    <a title="Github" href="{{profile.social_github}}" target="_blank">GitHub<i
-                            class=""></i></a>
-                </li>
-                {% endif %}
-
-                <li><a href="https://www.linkedin.com/in/mohammad-sulayman-rezaie-ab6940223/"><i class=""></i></a></li>
-                <li><a href="https://github.com/msrezaie"><i class=""></i></a></li>
-
-                {% if profile.social_linkedin %}
-                <li>
-                    <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank">LinkedIn<i
-                            class=""></i></a>
-                </li>
-                {% endif %} {% endcomment %}
-
-<div class="profile-card mx-auto">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <div class="card">
-                    <div class="img1"><img src="{{profile.profile_background.url}}" alt=""></div>
-                    <div class="img2"><img src="{{profile.profile_image.url}}" alt=""></div>
-                    <div class="profile-name"><h2>Hey, I am {{profile.full_name}}</h2></div>
-                    <div class="profile-title">{{profile.short_bio}}</div>
-                    <div class="profile-location">Based in {{profile.location}}</div>
-                    <div class="profile-socials">
-                        <a href=""><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                        <a href=""><i class="fa-brands fa-square-github fa-2xl"></i></a>
-                    </div>
-                    <div class="profile-btns">
-                        <div class="profile-btn-proj"><button type="button" class="btn btn-sm">My Projects</button></div>
-                        <div class="profile-btn-cont"><button type="button" class="btn btn-sm">Contact</button></div>    
+<div class="banner">
+    <div class="profile-card">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <div class="img1"><img src="{{profile.profile_background.url}}" alt=""></div>
+                        <div class="img2"><img src="{{profile.profile_image.url}}" alt=""></div>
+                        <div class="profile-name"><h2>Hey, I am {{profile.full_name}}</h2></div>
+                        <div class="profile-title">{{profile.short_bio}}</div>
+                        <div class="profile-location">Based in {{profile.location}}</div>
+                        <div class="profile-socials">
+                            {% if profile.social_linkedin %}
+                                <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                            {% endif %}
+                            {% if profile.social_github %}
+                                <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
+                            {% endif %}
+                        </div>
+                        <div class="profile-btns">
+                            <div class="profile-btn-proj"><button type="button" class="btn btn-sm">My Projects</button></div>
+                            <div class="profile-btn-cont"><button type="button" class="btn btn-sm">Contact</button></div>    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,8 +33,7 @@
     </div>
 </div>
 
-
-{% endblock profileCard %}
+{% endblock banner-profile %}
 
 {% block projectsCard %}
 
@@ -86,3 +74,7 @@
 </main>
 
 {% endblock projectsCard %}
+
+{% block about %}{% endblock about %}
+
+{% block contact %}{% endblock contact %}
