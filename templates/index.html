@@ -22,7 +22,9 @@
 
     {% block about %}{% endblock about %}
 
-    {% block contact %}{% endblock contact %}
+    {% comment %} {% block contact %}{% endblock contact %} {% endcomment %}
+
+    {% include 'base/contact-form.html' %}
 
     {% include 'footer.html' %}
 

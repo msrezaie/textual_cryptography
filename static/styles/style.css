@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-/* HTML STYLING */
+/* UNIVERSAL STYLING */
 *{
   margin: 0;
   padding: 0;
@@ -12,10 +12,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* body{
-  margin-top: 5vh;
-} */
-/* HTML STYLING END */
+.u-button{
+  color: white;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background-color: #14133d;
+}
+
+.u-button:hover{
+  color: silver;
+}
+
+/* UNIVERSAL STYLING */
 
 /* NAVBAR STYLING START */
 .navbar{
@@ -23,10 +31,20 @@ html {
   transition: all 0.4s ease;
 }
 
+.menu-list .nav-item{
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #14133d;
+}
+
+.nav-item .nav-link{
+  color: white;
+}
+
 .navbar.sticky{
   background-color: #14133d;
   padding: 15px 20px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .navbar.sticky li a{
@@ -101,7 +119,7 @@ html {
   .navbar.active{
     background-color: #14133d;
     transition: all 0.2s ease;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   }
 
   .navbar.active .icon{
@@ -145,18 +163,19 @@ html {
 /* BANNER STYLING END */
 
 /* PROFILE-CARD STYLING */
-.profile-card{
+.profile{
   padding: 150px 0 0 0;
 }
 
-.card{
+.profile-card{
+  background-color: white;
   width: 400px;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   border-radius: 15px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
   /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
 }
 
@@ -179,6 +198,7 @@ html {
   border-radius: 50%;
   border: 7px solid whitesmoke;
   margin-top: -90px;
+  object-fit: cover;
 }
 
 .profile-name{
@@ -193,7 +213,7 @@ html {
 
 .profile-title{
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   padding: 5px 10px;
   text-align: center;
 }
@@ -220,42 +240,58 @@ html {
   color: silver;
 }
 
-.profile-btns{
-  display: inline-flex;
-  padding: 5px 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profile-btn-proj{
-  padding: 0 10px;
-}
-
-.profile-btn-cont{
-  padding: 0 10px;
-}
-
-.profile-btn-proj button{
-  color: white;
-  background-color: #14133d;
-}
-
-.profile-btn-cont button{
-  color: white;
-  background-color: #14133d;
-}
-
-.profile-btn-proj button:hover{
-  background-color: silver;
-}
-
-.profile-btn-cont button:hover{
-  background-color: silver;
+.profile-proj-btn{
+  text-align: center;
 }
 /* PROFILE-CARD STYLING END */
 
+/* TITLE CARD STYLING */
+
+/* .title-card{
+  margin-top: 5vh;
+} */
+
+.title-card-banner{
+  background-color: white;
+  width: 100%;
+  max-width: 150px;
+  height: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+}
+
+/* TITLE CARD STYLING END */
+
+/* PROJECTS STYLING */
+
+.projects-stack{
+  margin-top: 5vh;
+}
+
+.projects-card{
+  transition: all 0.1s ease;
+}
+
+.projects-card:hover{
+  transform: scale(1.01);
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+  border: none;
+}
+
+.proj-img img{
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  object-fit: cover;
+}
+
+/* PROJECTS STYLING END */
+
 /* FOOTER STYLING */
 .footer-card{
+  margin-top: 10vh;
   position: static;
   left: 0;
   bottom: 0;

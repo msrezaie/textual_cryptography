@@ -4,30 +4,23 @@
 {% block banner-profile %}
 
 <div class="banner">
-    <div class="profile-card">
+    <div class="profile">
         <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card">
-                        <div class="img1"><img src="{{profile.profile_background.url}}" alt=""></div>
-                        <div class="img2"><img src="{{profile.profile_image.url}}" alt=""></div>
-                        <div class="profile-name"><h2>Hey, I am {{profile.full_name}}</h2></div>
-                        <div class="profile-title">{{profile.short_bio}}</div>
-                        <div class="profile-location">Based in {{profile.location}}</div>
-                        <div class="profile-socials">
-                            {% if profile.social_linkedin %}
-                                <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                            {% endif %}
-                            {% if profile.social_github %}
-                                <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
-                            {% endif %}
-                        </div>
-                        <div class="profile-btns">
-                            <div class="profile-btn-proj"><button type="button" class="btn btn-sm">My Projects</button></div>
-                            <div class="profile-btn-cont"><button type="button" class="btn btn-sm">Contact</button></div>    
-                        </div>
-                    </div>
+            <div class="profile-card">
+                <div class="img1"><img src="{{profile.profile_background.url}}" alt=""></div>
+                <div class="img2"><img src="{{profile.profile_image.url}}" alt=""></div>
+                <div class="profile-name"><h2>Hey, I am {{profile.full_name}}</h2></div>
+                <div class="profile-title">{{profile.short_bio}}</div>
+                <div class="profile-location">Based in {{profile.location}}</div>
+                <div class="profile-socials">
+                    {% if profile.social_linkedin %}
+                        <a title="LinkedIn" href="{{profile.social_linkedin}}" target="_blank"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                    {% endif %}
+                    {% if profile.social_github %}
+                        <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
+                    {% endif %}
                 </div>
+                <div class="profile-proj-btn"><button type="button" class="u-button">MY PROJECTS</button></div>
             </div>
         </div>
     </div>
@@ -37,44 +30,57 @@
 
 {% block projectsCard %}
 
-<main>
-    <div class="">
-        <div class="">
-            <div class="">
-                <div class="">
-                    <h3 class="">Projects</h3>
-                    <div class="">
-                        {% for project in projects %}
-                        <div class="">
-                            <div class="">
-                                <a href="{% url 'project' project.id %}" class="project">
-                                    <img class="project__thumbnail" src="{{project.featured_image.url}}"
-                                        alt="project thumbnail" />
-                                    <div class="card__body">
-                                        <h3 class="project__title">{{project.title}}</h3>
-                                        <div class="project__tags">
+<div class="title-card">
+    <div class="container">
+        <h3>PROJECTS</h3>
+        <div class="title-card-banner">
+    </div>
+</div>
 
-                                            {% for tag in project.tags.all %}
-                                            <span class="tag tag--pill tag--main">
-                                                <small>{{tag}}</small>
-                                            </span>
-                                            {% endfor %}
+<div class="projects-stack">
+    <div class="container">
+        <div class="row gy-4">
+            {% for project in projects %}
+                <div class="col-lg-6">
+                    <div class="projects-card card">
+                        <div class="proj-img"><img class="card-img-top" src="{{project.featured_image.url}}" alt="..."></div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{project.title}}</h3>
+                            <p class="card-text">lorem20 Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div class="project_tags">
 
-                                        </div>
-                                    </div>
-                                </a>
+                                {% for tag in project.tags.all %}
+                                <span class="tag tag--pill tag--main">
+                                    <small>{{tag}}</small>
+                                </span>
+                                {% endfor %}
+
                             </div>
+                            <a href="{% url 'project' project.id %}" class=""><button class="u-button">Go somewhere</button></a>
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-</main>
+</div>
 
 {% endblock projectsCard %}
 
-{% block about %}{% endblock about %}
+{% block about %}
 
-{% block contact %}{% endblock contact %}
+<div class="title-card">
+    <div class="container">
+        <h3>ABOUT ME</h3>
+        <div class="title-card-banner">
+    </div>
+</div>
+
+<div class="container">
+    <p>In my final year of studying Software Engineering</p>
+    <p>Love writing code with Python and Django, passinate about stuyding and working on APIs, 
+        Automation, and Testing.</p>
+    <p>Aside from coding, I spend my time on grinding competetive fighting game tournaments</p>
+</div>
+
+{% endblock about %}
