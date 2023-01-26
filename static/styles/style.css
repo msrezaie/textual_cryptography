@@ -23,11 +23,52 @@ html {
   color: silver;
 }
 
+.banner{
+  height: 100vh;
+  background-image: url("/static/images/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.title-card .container{
+  padding: 10px 0px;
+  background-image: url("/static/images/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  border-radius: 5px;
+}
+
+.title-card{
+  padding-top: 50px;
+  padding-left: auto;
+  padding-right: auto;
+  padding-bottom: 40px;
+}
+
+.title-card-banner{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  max-width: 150px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+}
+
+.title-card-banner h3{
+  font-size: 25px;
+  padding: 5px;
+}
+
 /* UNIVERSAL STYLING */
 
 /* NAVBAR STYLING START */
 .navbar{
-  padding: 20px 30px;
+  padding: 10px 30px;
   transition: all 0.4s ease;
 }
 
@@ -35,6 +76,7 @@ html {
   border-radius: 10px;
   padding: 5px 10px;
   background-color: #14133d;
+  box-shadow: 0px 5px 10px 0px rgba(255, 255, 255, 0.1);
 }
 
 .nav-item .nav-link{
@@ -43,8 +85,12 @@ html {
 
 .navbar.sticky{
   background-color: #14133d;
-  padding: 15px 20px;
+  padding: 5px 20px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.navbar.sticky .menu-list .nav-item{
+  box-shadow: none;
 }
 
 .navbar.sticky li a{
@@ -70,8 +116,9 @@ html {
 }
 
 .navbar .logo a{
-  color: black;
+  color: white;
   font-size: 28px;
+  font-weight: 500;
 }
 
 .icon{
@@ -150,17 +197,6 @@ html {
   }
 }
 /* NAVBAR STYLING END */
-
-/* BANNER STYLING */
-.banner{
-  height: 100vh;
-  background-image: url("/static/images/bg.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  /* background-size: 990px; */
-}
-/* BANNER STYLING END */
 
 /* PROFILE-CARD STYLING */
 .profile{
@@ -245,29 +281,7 @@ html {
 }
 /* PROFILE-CARD STYLING END */
 
-/* TITLE CARD STYLING */
-
-/* .title-card{
-  margin-top: 5vh;
-} */
-
-.title-card-banner{
-  background-color: white;
-  width: 100%;
-  max-width: 150px;
-  height: 10px;
-  border-radius: 15px;
-  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
-}
-
-/* TITLE CARD STYLING END */
-
 /* PROJECTS STYLING */
-
-.projects-stack{
-  margin-top: 5vh;
-}
-
 .projects-card{
   transition: all 0.1s ease;
 }

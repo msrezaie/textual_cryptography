@@ -32,17 +32,18 @@
 
 <div class="title-card">
     <div class="container">
-        <h3>PROJECTS</h3>
         <div class="title-card-banner">
+            <h3>PROJECTS</h3>
+        </div>
     </div>
 </div>
 
 <div class="projects-stack">
     <div class="container">
-        <div class="row gy-4">
+        <div class="row gy-3">
             {% for project in projects %}
                 <div class="col-lg-6">
-                    <div class="projects-card card">
+                    <div class="projects-card card h-100">
                         <div class="proj-img"><img class="card-img-top" src="{{project.featured_image.url}}" alt="..."></div>
                         <div class="card-body">
                             <h3 class="card-title">{{project.title}}</h3>
@@ -71,8 +72,9 @@
 
 <div class="title-card">
     <div class="container">
-        <h3>ABOUT ME</h3>
         <div class="title-card-banner">
+            <h3>ABOUT ME</h3>
+        </div>
     </div>
 </div>
 
@@ -84,3 +86,25 @@
 </div>
 
 {% endblock about %}
+
+{% block contact %}
+
+<div class="title-card">
+    <div class="container">
+        <div class="title-card-banner">
+            <h3>CONTACT</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <ul class="form-list">
+            {{form.as_p}}
+        </ul>
+        <input type="submit" value="Send">
+    </form>
+</div>
+
+{% endblock contact %}

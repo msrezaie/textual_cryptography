@@ -65,3 +65,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+class Contact(models.Model):
+    class Meta:
+        ordering = ["timestamp"]
+    timestamp = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    message = models.CharField(max_length=500)
+    
+    def __str__(self):
+        return self.name
