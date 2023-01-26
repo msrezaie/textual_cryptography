@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-/* HTML STYLING */
+
+/* UNIVERSAL STYLING */
 *{
   margin: 0;
   padding: 0;
@@ -11,21 +12,85 @@ html {
   scroll-behavior: smooth;
 }
 
-body{
-  margin-top: 5vh;
+.u-button{
+  color: white;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background-color: #14133d;
 }
-/* HTML STYLING END */
+
+.u-button:hover{
+  color: silver;
+}
+
+.banner{
+  height: 100vh;
+  background-image: url("/static/images/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.title-card .container{
+  padding: 10px 0px;
+  background-image: url("/static/images/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  border-radius: 5px;
+}
+
+.title-card{
+  padding-top: 50px;
+  padding-left: auto;
+  padding-right: auto;
+  padding-bottom: 40px;
+}
+
+.title-card-banner{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: white;
+  width: 100%;
+  height: 40px;
+  max-width: 150px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+}
+
+.title-card-banner h3{
+  font-size: 25px;
+  padding: 5px;
+}
+
+/* UNIVERSAL STYLING */
 
 /* NAVBAR STYLING START */
 .navbar{
-  padding: 20px 30px;
+  padding: 10px 30px;
   transition: all 0.4s ease;
+}
+
+.menu-list .nav-item{
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #14133d;
+  box-shadow: 0px 5px 10px 0px rgba(255, 255, 255, 0.1);
+}
+
+.nav-item .nav-link{
+  color: white;
 }
 
 .navbar.sticky{
   background-color: #14133d;
-  padding: 15px 20px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+  padding: 5px 20px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.navbar.sticky .menu-list .nav-item{
+  box-shadow: none;
 }
 
 .navbar.sticky li a{
@@ -43,6 +108,7 @@ body{
 .menu-list li a{
   color: black;
   font-size: 18px;
+  font-weight: 400;
 }
   
 .menu-list li a:hover{
@@ -50,8 +116,9 @@ body{
 }
 
 .navbar .logo a{
-  color: black;
+  color: white;
   font-size: 28px;
+  font-weight: 500;
 }
 
 .icon{
@@ -99,7 +166,7 @@ body{
   .navbar.active{
     background-color: #14133d;
     transition: all 0.2s ease;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   }
 
   .navbar.active .icon{
@@ -115,7 +182,9 @@ body{
   }
 
   .navbar .menu-list li{
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
   }
 
   .navbar .menu-list li a{
@@ -129,8 +198,114 @@ body{
 }
 /* NAVBAR STYLING END */
 
+/* PROFILE-CARD STYLING */
+.profile{
+  padding: 150px 0 0 0;
+}
+
+.profile-card{
+  background-color: white;
+  width: 400px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+  /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
+}
+
+.img1 img{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
+}
+
+.img2 img{
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 7px solid whitesmoke;
+  margin-top: -90px;
+  object-fit: cover;
+}
+
+.profile-name{
+  padding: 10px 0;
+  text-align: center;
+}
+
+.profile-name h2{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.profile-title{
+  font-size: 18px;
+  font-weight: 400;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.profile-location{
+  font-size: 16px;
+  font-weight: 300;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.profile-socials{
+  text-align: center;
+  padding: 30px 0;
+}
+
+.profile-socials a{
+  color: #14133d;
+  padding: 0 5px;
+}
+
+.profile-socials a:hover{
+  transition: all 0.2s ease;
+  color: silver;
+}
+
+.profile-proj-btn{
+  text-align: center;
+}
+/* PROFILE-CARD STYLING END */
+
+/* PROJECTS STYLING */
+.projects-card{
+  transition: all 0.1s ease;
+}
+
+.projects-card:hover{
+  transform: scale(1.01);
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+  border: none;
+}
+
+.proj-img img{
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  object-fit: cover;
+}
+
+/* PROJECTS STYLING END */
+
 /* FOOTER STYLING */
 .footer-card{
+  margin-top: 10vh;
   position: static;
   left: 0;
   bottom: 0;
@@ -162,113 +337,3 @@ body{
   color: silver;
 }
 /* FOOTER STYLING END */
-
-/* PROFILE-CARD STYLING */
-.profile-card{
-  padding: 80px 0;
-}
-
-.card{
-  width: 400px;
-  height: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
-  /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
-}
-
-.img1 img{
-  width: 100%;
-  height: 200px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  object-fit: cover;
-}
-
-.img2 img{
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 1;
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  border: 7px solid whitesmoke;
-  margin-top: -90px;
-}
-
-.profile-name{
-  padding: 10px 0;
-  text-align: center;
-}
-
-.profile-name h2{
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.profile-title{
-  font-size: 18px;
-  font-weight: 300;
-  padding: 5px 10px;
-  text-align: center;
-}
-
-.profile-location{
-  font-size: 16px;
-  font-weight: 300;
-  padding: 5px 10px;
-  text-align: center;
-}
-
-.profile-socials{
-  text-align: center;
-  padding: 30px 0;
-}
-
-.profile-socials a{
-  color: #14133d;
-  padding: 0 5px;
-}
-
-.profile-socials a:hover{
-  transition: all 0.2s ease;
-  color: silver;
-}
-
-.profile-btns{
-  display: inline-flex;
-  padding: 5px 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profile-btn-proj{
-  padding: 0 10px;
-}
-
-.profile-btn-cont{
-  padding: 0 10px;
-}
-
-.profile-btn-proj button{
-  color: white;
-  background-color: #14133d;
-}
-
-.profile-btn-cont button{
-  color: white;
-  background-color: #14133d;
-}
-
-.profile-btn-proj button:hover{
-  background-color: silver;
-}
-
-.profile-btn-cont button:hover{
-  background-color: silver;
-}
-/* PROFILE-CARD STYLING END */
