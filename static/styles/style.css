@@ -289,7 +289,11 @@ html {
 
 @media (max-width: 868px) {
   .profile{
-    padding: 130px 0 0 0;
+    padding: 110px 0 0 0;
+  }
+
+  .profile-card{
+    width: 320px;
   }
 }
 /* PROFILE-CARD STYLING END */
@@ -313,8 +317,13 @@ html {
   border-top-right-radius: 5px;
   object-fit: cover;
 }
-
 /* PROJECTS STYLING END */
+
+/* CONTACT STYLING */
+.container .form-list{
+  overflow: hidden;
+}
+/* CONTACT STYLING END */
 
 /* FOOTER STYLING */
 .footer-card{
