@@ -29,6 +29,7 @@ html {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 .title-card .container{
@@ -138,15 +139,14 @@ html {
 }
 
 /* unless the screen width is at least ...px, do not display */
-@media (max-width: 868px) {
+@media (max-width: 568px) {
   .navbar .menu-list{
     position: fixed;
-    top: 1%;
+    top: -0.1%;
     right: -100%;
-    height: 100vh;
     width: 100%;
-    max-width: 240px;
-    max-height: 300px;
+    max-width: 160px;
+    max-height: 110px;
     display: block;
     padding: 15px 0;
     text-align: center;
@@ -154,8 +154,13 @@ html {
     transition: all 0.2s ease;
   }
 
+  .menu-list .nav-item{
+    border-radius: none;
+    box-shadow: none;
+  }
+
   .icon{
-    color: black;
+    color: white;
     display: block;
   }
 
@@ -190,6 +195,7 @@ html {
   .navbar .menu-list li a{
     color: white;
     margin-left: 0px;
+    font-size: 16px;
   }
   
   .menu-list li a:hover{
@@ -205,13 +211,14 @@ html {
 
 .profile-card{
   background-color: white;
-  width: 400px;
+  width: 380px;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
+  align-items: center;
   /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
 }
 
@@ -279,6 +286,12 @@ html {
 .profile-proj-btn{
   text-align: center;
 }
+
+@media (max-width: 868px) {
+  .profile{
+    padding: 130px 0 0 0;
+  }
+}
 /* PROFILE-CARD STYLING END */
 
 /* PROJECTS STYLING */
@@ -311,7 +324,7 @@ html {
   bottom: 0;
   width: 100%;
   background-color: white;
-  padding: 20px 40px;
+  padding: 20px;
   box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 1.5), 
            inset 10px 10px 15px rgba(70, 70, 70, 0.12);
 }
@@ -321,16 +334,15 @@ html {
 }
 
 .footer-card .social-list{
-  display: inline-flex;
-}
-
-.footer-card li{
   list-style: none;
-  padding: 10px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
 }
 
 .social-list a{
   color: #14133d;
+  padding: 5px;
 }
 
 .social-list a:hover{
