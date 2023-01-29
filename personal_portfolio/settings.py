@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-rl&q=-hs3ew9uttrwb4v!n+9k1uf4p4a8(om!jny$so(achje8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['msrezaie.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

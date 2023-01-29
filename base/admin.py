@@ -6,4 +6,8 @@ admin.site.register(Profile)
 admin.site.register(Project)
 admin.site.register(Tag)
 admin.site.register(Skill)
-admin.site.register(Contact)
+
+@admin.register(Contact)
+class ContactsAdmin(admin.ModelAdmin):
+    list_display = ('timestamp', 'name', 'title', 'email', 'message')
+

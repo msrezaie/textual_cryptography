@@ -7,8 +7,8 @@ def base(request):
     profile = Profile.objects.first()
     projects = Project.objects.all()
     
-    topSkills = profile.skill_set.exclude(description__exact="")
-    otherSkills = profile.skill_set.filter(description="")
+    # topSkills = profile.skill_set.exclude(description__exact="")
+    # otherSkills = profile.skill_set.filter(description="")
 
     form = ContactForm()
 
@@ -21,8 +21,8 @@ def base(request):
     context = {
         'profile': profile,
         'projects': projects,
-        'topSkills': topSkills,
-        'otherSkills': otherSkills,
+        # 'topSkills': topSkills,
+        # 'otherSkills': otherSkills,
         'page': page,
         'form': form
     }

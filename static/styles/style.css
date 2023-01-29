@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap');
 
 /* UNIVERSAL STYLING */
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 html {
@@ -17,6 +18,9 @@ html {
   padding: 5px 8px;
   border-radius: 10px;
   background-color: #14133d;
+  outline: none !important;
+  border-color: none !important;
+  box-shadow: none !important;
 }
 
 .u-button:hover{
@@ -33,7 +37,7 @@ html {
 }
 
 .title-card .container{
-  padding: 10px 0px;
+  padding: 8px 0px;
   background-image: url("/static/images/bg.png");
   background-size: cover;
   background-position: center;
@@ -54,17 +58,16 @@ html {
   text-align: center;
   background-color: white;
   width: 100%;
-  height: 40px;
-  max-width: 150px;
+  height: 30px;
+  max-width: 130px;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
 }
 
 .title-card-banner h3{
-  font-size: 25px;
-  padding: 5px;
+  font-size: 23px;
+  font-weight: 600;
 }
-
 /* UNIVERSAL STYLING */
 
 /* NAVBAR STYLING START */
@@ -206,7 +209,7 @@ html {
 
 /* PROFILE-CARD STYLING */
 .profile{
-  padding: 150px 0 0 0;
+  margin-top: 150px;
 }
 
 .profile-card{
@@ -219,7 +222,6 @@ html {
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
   align-items: center;
-  /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
 }
 
 .img1 img{
@@ -289,11 +291,20 @@ html {
 
 @media (max-width: 868px) {
   .profile{
-    padding: 110px 0 0 0;
+    margin-top: 150px;
   }
 
   .profile-card{
     width: 320px;
+  }
+
+  .img1 img{
+    height: 150px;
+  }
+
+  .img2 img{
+    width: 150px;
+    height: 150px;
   }
 }
 /* PROFILE-CARD STYLING END */
@@ -319,15 +330,54 @@ html {
 }
 /* PROJECTS STYLING END */
 
+/* ABOUT ME STYLING */
+.about-me{
+  padding: 20px 0;
+}
+
+.about-me h5{
+  padding: 20px 0;
+}
+/* ABOUT ME STYLING END */
+
 /* CONTACT STYLING */
-.container .form-list{
-  overflow: hidden;
+.contact-text{
+  padding: 30px 0;
+}
+
+.contact-text p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.form-group .contact-labels{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact-field{
+  padding: 5px 0;
+}
+
+.form-control {
+  border-color: none;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.3);
+}
+
+.form-control:focus {
+  border-color: #14133d;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.3);
+}
+
+.form-btn{
+  text-align: center;
+  padding: 20px 0;
 }
 /* CONTACT STYLING END */
 
 /* FOOTER STYLING */
 .footer-card{
-  margin-top: 10vh;
+  margin-top: 2vh;
   position: static;
   left: 0;
   bottom: 0;

@@ -15,6 +15,9 @@ class Profile(models.Model):
     email = models.EmailField(max_length=200, null= True, blank=True)
     long_bio = models.TextField(null= True, blank=True)
     short_bio = models.CharField(max_length=200, null= True, blank=True)
+    line1 = models.CharField(max_length=200, null= True, blank=True)
+    line2 = models.CharField(max_length=200, null= True, blank=True)
+    line3 = models.CharField(max_length=200, null= True, blank=True)
     location = models.CharField(max_length=200, null= True, blank=True)
     profile_image = models.ImageField(null=True, blank=True, default="no-image.jpg")
     profile_background = models.ImageField(null=True, blank=True, default="no-image.jpg")
@@ -73,7 +76,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
-    message = models.CharField(max_length=500)
+    message = models.TextField(null= True, blank=True)
     
     def __str__(self):
         return self.name

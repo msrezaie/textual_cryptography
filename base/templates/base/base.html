@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load widget_tweaks %}
 {% load static %}
 
 {% block banner-profile %}
@@ -35,7 +36,7 @@
 <div class="title-card">
     <div class="container">
         <div class="title-card-banner">
-            <h3>PROJECTS</h3>
+            <h3>Projects</h3>
         </div>
     </div>
 </div>
@@ -75,16 +76,17 @@
 <div class="title-card">
     <div class="container">
         <div class="title-card-banner">
-            <h3>ABOUT ME</h3>
+            <h3>About Me</h3>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <p>In my final year of studying Software Engineering</p>
-    <p>Love writing code with Python and Django, passinate about stuyding and working on APIs, 
-        Automation, and Testing.</p>
-    <p>Aside from coding, I spend my time on grinding competetive fighting game tournaments</p>
+    <div class="about-me">
+        <h5>{{profile.line1}}</h5>
+        <h5>{{profile.line2}}</h5>
+        <h5>{{profile.line3}}</h5>
+    </div>
 </div>
 
 {% endblock about %}
@@ -94,19 +96,29 @@
 <div class="title-card">
     <div class="container">
         <div class="title-card-banner">
-            <h3>CONTACT</h3>
+            <h3>Contact</h3>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <form action="" method="POST">
+    <div class="contact-text"><p>Interested in working together? Let's connect via email</p></div>
+    <form id="contact-form" class='cont-form' action="" method="POST">
         {% csrf_token %}
-        <ul class="form-list">
-            {{form.as_p}}
-        </ul>
-        <input type="submit" value="Send">
+        {% for field in form %}
+            <div class="form-group">
+                <div class="contact-field">{{ field|add_class:"form-control" }}</div>
+                {% if field.errors %}
+                <div class="alert alert-danger">
+                    {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
     </form>
+    <div class="form-btn"><button class="u-button" type="submit" form="contact-form" value="Submit">SEND</button></div>
 </div>
 
 {% endblock contact %}
