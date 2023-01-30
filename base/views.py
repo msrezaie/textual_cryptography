@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . models import Project, Profile, Page
 from . forms import ContactForm
 
+
 def base(request):
     page = Page.objects.first()
     profile = Profile.objects.first()
@@ -10,21 +11,19 @@ def base(request):
     # topSkills = profile.skill_set.exclude(description__exact="")
     # otherSkills = profile.skill_set.filter(description="")
 
-    form = ContactForm()
+    form = ContactForm(request.POST or None)
+    form_message = ""
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('base')
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        form_message = "I will get back to you ASAP!"
 
     context = {
         'profile': profile,
         'projects': projects,
-        # 'topSkills': topSkills,
-        # 'otherSkills': otherSkills,
         'page': page,
-        'form': form
+        'form': form,
+        'form_message': form_message,
     }
     
     return render(request, "base/base.html", context)

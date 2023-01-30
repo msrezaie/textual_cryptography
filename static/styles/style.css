@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap');
 
 /* UNIVERSAL STYLING */
@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 html {
@@ -29,7 +29,7 @@ html {
 
 .banner{
   height: 100vh;
-  background-image: url("/static/images/bg.png");
+  background-image: url("/static/uploads/images/bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -38,7 +38,7 @@ html {
 
 .title-card .container{
   padding: 8px 0px;
-  background-image: url("/static/images/bg.png");
+  background-image: url("/static/uploads/images/bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -65,8 +65,33 @@ html {
 }
 
 .title-card-banner h3{
-  font-size: 23px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.project-tags{
+  display: inline-flex;
+}
+
+.tag-pill h6{
+  text-align: center;
+  padding: 0px 5px;
+  font-size: 13px;
+  color: grey;
+}
+
+.tag-pill{
+  background-color: white;
+  border-radius: 15px;
+  padding: 0 5px;
+  height: 18px;
+  text-align: center;
+  box-shadow: 1px 2px 5px 0px rgba(20, 19, 61, 0.2);
+}
+
+.card-btns{
+  padding: 5px 10px;
+  margin-bottom: 5px;
 }
 /* UNIVERSAL STYLING */
 
@@ -289,6 +314,7 @@ html {
   text-align: center;
 }
 
+
 @media (max-width: 868px) {
   .profile{
     margin-top: 150px;
@@ -296,6 +322,7 @@ html {
 
   .profile-card{
     width: 320px;
+    height: 540px;
   }
 
   .img1 img{
@@ -367,6 +394,10 @@ html {
 .form-control:focus {
   border-color: #14133d;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.3);
+}
+
+.contact-left-side .col-4{
+  display: block;
 }
 
 .form-btn{

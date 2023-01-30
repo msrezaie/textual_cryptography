@@ -1,10 +1,11 @@
+from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
 import os
 
 class Page(models.Model):
-    landing_page_background = models.ImageField(null=True, blank=True)
+    landing_page_background = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return os.path.basename(self.landing_page_background.name)
@@ -19,10 +20,11 @@ class Profile(models.Model):
     line2 = models.CharField(max_length=200, null= True, blank=True)
     line3 = models.CharField(max_length=200, null= True, blank=True)
     location = models.CharField(max_length=200, null= True, blank=True)
-    profile_image = models.ImageField(null=True, blank=True, default="no-image.jpg")
-    profile_background = models.ImageField(null=True, blank=True, default="no-image.jpg")
+    profile_image = models.ImageField(upload_to='images/', null=True, blank=True, default="no-image.jpg")
+    profile_background = models.ImageField(upload_to='images/', null=True, blank=True, default="no-image.jpg")
     social_github = models.CharField(max_length=200, null= True, blank=True)
     social_linkedin = models.CharField(max_length=200, null= True, blank=True)
+    resume = models.FileField(upload_to='documents/', null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     
@@ -44,8 +46,9 @@ class Skill(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
-    desc = models.TextField(null=True, blank=True)
-    featured_image = models.ImageField(
+    long_description = models.TextField(null=True, blank=True)
+    short_description = models.TextField(max_length=200, null=True, blank=True)
+    featured_image = models.ImageField(upload_to='images/',
         null=True, blank=True, default="no-image.jpg")
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)

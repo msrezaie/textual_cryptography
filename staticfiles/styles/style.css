@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap');
 
 /* UNIVERSAL STYLING */
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 html {
@@ -17,6 +18,9 @@ html {
   padding: 5px 8px;
   border-radius: 10px;
   background-color: #14133d;
+  outline: none !important;
+  border-color: none !important;
+  box-shadow: none !important;
 }
 
 .u-button:hover{
@@ -25,15 +29,16 @@ html {
 
 .banner{
   height: 100vh;
-  background-image: url("/static/images/bg.png");
+  background-image: url("/static/uploads/images/bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 .title-card .container{
-  padding: 10px 0px;
-  background-image: url("/static/images/bg.png");
+  padding: 8px 0px;
+  background-image: url("/static/uploads/images/bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -53,17 +58,41 @@ html {
   text-align: center;
   background-color: white;
   width: 100%;
-  height: 40px;
-  max-width: 150px;
+  height: 30px;
+  max-width: 130px;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
 }
 
 .title-card-banner h3{
   font-size: 25px;
-  padding: 5px;
+  font-weight: 500;
 }
 
+.project-tags{
+  display: inline-flex;
+}
+
+.tag-pill h6{
+  text-align: center;
+  padding: 0px 5px;
+  font-size: 13px;
+  color: grey;
+}
+
+.tag-pill{
+  background-color: white;
+  border-radius: 15px;
+  padding: 0 5px;
+  height: 18px;
+  text-align: center;
+  box-shadow: 1px 2px 5px 0px rgba(20, 19, 61, 0.2);
+}
+
+.card-btns{
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
 /* UNIVERSAL STYLING */
 
 /* NAVBAR STYLING START */
@@ -138,15 +167,14 @@ html {
 }
 
 /* unless the screen width is at least ...px, do not display */
-@media (max-width: 868px) {
+@media (max-width: 568px) {
   .navbar .menu-list{
     position: fixed;
-    top: 1%;
+    top: -0.1%;
     right: -100%;
-    height: 100vh;
     width: 100%;
-    max-width: 240px;
-    max-height: 300px;
+    max-width: 160px;
+    max-height: 110px;
     display: block;
     padding: 15px 0;
     text-align: center;
@@ -154,8 +182,13 @@ html {
     transition: all 0.2s ease;
   }
 
+  .menu-list .nav-item{
+    border-radius: none;
+    box-shadow: none;
+  }
+
   .icon{
-    color: black;
+    color: white;
     display: block;
   }
 
@@ -190,6 +223,7 @@ html {
   .navbar .menu-list li a{
     color: white;
     margin-left: 0px;
+    font-size: 16px;
   }
   
   .menu-list li a:hover{
@@ -200,19 +234,19 @@ html {
 
 /* PROFILE-CARD STYLING */
 .profile{
-  padding: 150px 0 0 0;
+  margin-top: 150px;
 }
 
 .profile-card{
   background-color: white;
-  width: 400px;
+  width: 380px;
   height: 600px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
-  /* box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5) */
+  align-items: center;
 }
 
 .img1 img{
@@ -279,6 +313,27 @@ html {
 .profile-proj-btn{
   text-align: center;
 }
+
+
+@media (max-width: 868px) {
+  .profile{
+    margin-top: 150px;
+  }
+
+  .profile-card{
+    width: 320px;
+    height: 540px;
+  }
+
+  .img1 img{
+    height: 150px;
+  }
+
+  .img2 img{
+    width: 150px;
+    height: 150px;
+  }
+}
 /* PROFILE-CARD STYLING END */
 
 /* PROJECTS STYLING */
@@ -300,18 +355,66 @@ html {
   border-top-right-radius: 5px;
   object-fit: cover;
 }
-
 /* PROJECTS STYLING END */
+
+/* ABOUT ME STYLING */
+.about-me{
+  padding: 20px 0;
+}
+
+.about-me h5{
+  padding: 20px 0;
+}
+/* ABOUT ME STYLING END */
+
+/* CONTACT STYLING */
+.contact-text{
+  padding: 30px 0;
+}
+
+.contact-text p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.form-group .contact-labels{
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact-field{
+  padding: 5px 0;
+}
+
+.form-control {
+  border-color: none;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.3);
+}
+
+.form-control:focus {
+  border-color: #14133d;
+  box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.3);
+}
+
+.contact-left-side .col-4{
+  display: block;
+}
+
+.form-btn{
+  text-align: center;
+  padding: 20px 0;
+}
+/* CONTACT STYLING END */
 
 /* FOOTER STYLING */
 .footer-card{
-  margin-top: 10vh;
+  margin-top: 2vh;
   position: static;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: white;
-  padding: 20px 40px;
+  padding: 20px;
   box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 1.5), 
            inset 10px 10px 15px rgba(70, 70, 70, 0.12);
 }
@@ -321,16 +424,15 @@ html {
 }
 
 .footer-card .social-list{
-  display: inline-flex;
-}
-
-.footer-card li{
   list-style: none;
-  padding: 10px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
 }
 
 .social-list a{
   color: #14133d;
+  padding: 5px;
 }
 
 .social-list a:hover{

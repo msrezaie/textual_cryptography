@@ -50,17 +50,18 @@
                         <div class="proj-img"><img class="card-img-top" src="{{project.featured_image.url}}" alt="..."></div>
                         <div class="card-body">
                             <h3 class="card-title">{{project.title}}</h3>
-                            <p class="card-text">lorem20 Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="project_tags">
-
+                            <p class="card-text">{{project.short_description}}</p>
+                            <div class="project-tags">
                                 {% for tag in project.tags.all %}
-                                <span class="tag tag--pill tag--main">
-                                    <small>{{tag}}</small>
-                                </span>
+                                <div style="margin: 0 2px;" class="tag-pill">
+                                    <h6>{{tag}}</h6>
+                                </div>
                                 {% endfor %}
-
                             </div>
-                            <a href="{% url 'project' project.id %}" class=""><button class="u-button">Go somewhere</button></a>
+                        </div>
+                        <div class="card-btns">
+                            <a href="{% url 'base_app:project' project.id %}" class=""><button class="u-button">LIVE DEMO</button></a>
+                            <a href="{{project.source_link}}" class=""><button class="u-button">CODE</button></a>
                         </div>
                     </div>
                 </div>
@@ -87,6 +88,11 @@
         <h5>{{profile.line2}}</h5>
         <h5>{{profile.line3}}</h5>
     </div>
+    {% if profile.resume %}
+        <a href="{{ profile.resume.url }}"><button>Download Resume</button></a>
+    {% else %}
+        <button disabled>Download Resume</button>
+    {% endif %}
 </div>
 
 {% endblock about %}
@@ -103,7 +109,7 @@
 
 <div class="container">
     <div class="contact-text"><p>Interested in working together? Let's connect via email</p></div>
-    <form id="contact-form" class='cont-form' action="" method="POST">
+    <form id="contact-form" class='cont-form' action="{% url 'base_app:base' %}" method="POST">
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">
@@ -119,6 +125,13 @@
         {% endfor %}
     </form>
     <div class="form-btn"><button class="u-button" type="submit" form="contact-form" value="Submit">SEND</button></div>
+    <script>
+        var message = "{{ form_message }}";
+        if (message) {
+          alert(message);
+          window.location.replace("{% url 'base_app:base' %}");
+        }
+    </script>
 </div>
 
 {% endblock contact %}
