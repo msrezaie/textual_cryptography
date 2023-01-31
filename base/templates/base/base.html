@@ -3,7 +3,6 @@
 {% load static %}
 
 {% block banner-profile %}
-
 <div class="banner">
     <div class="profile">
         <div class="row">
@@ -22,54 +21,52 @@
                             <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
                         {% endif %}
                     </div>
-                    <div class="profile-proj-btn"><button type="button" class="u-button">MY PROJECTS</button></div>
+                    <div class="profile-proj-btn"><button onclick="scrollToBlock('scroll-to-projects')" type="button" class="u-button">MY PROJECTS</button></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock banner-profile %}
 
 {% block projectsCard %}
-
-<div class="title-card">
-    <div class="container">
-        <div class="title-card-banner">
-            <h3>Projects</h3>
+<div id="scroll-to-projects">
+    <div class="title-card">
+        <div class="container">
+            <div class="title-card-banner">
+                <h3>Projects</h3>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="projects-stack">
-    <div class="container">
-        <div class="row gy-3">
-            {% for project in projects %}
-                <div class="col-lg-6">
-                    <div class="projects-card card h-100">
-                        <div class="proj-img"><img class="card-img-top" src="{{project.featured_image.url}}" alt="..."></div>
-                        <div class="card-body">
-                            <h3 class="card-title">{{project.title}}</h3>
-                            <p class="card-text">{{project.short_description}}</p>
-                            <div class="project-tags">
-                                {% for tag in project.tags.all %}
-                                <div style="margin: 0 2px;" class="tag-pill">
-                                    <h6>{{tag}}</h6>
+    <div class="projects-stack">
+        <div class="container">
+            <div class="row gy-3">
+                {% for project in projects %}
+                    <div class="col-lg-6">
+                        <div class="projects-card card h-100">
+                            <div class="proj-img"><img class="card-img-top" src="{{project.featured_image.url}}" alt="..."></div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{project.title}}</h3>
+                                <p class="card-text">{{project.short_description}}</p>
+                                <div class="project-tags">
+                                    {% for tag in project.tags.all %}
+                                    <div style="margin: 0 2px;" class="tag-pill">
+                                        <h6>{{tag}}</h6>
+                                    </div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
+                            </div>
+                            <div class="card-btns">
+                                <a href="{% url 'base_app:project' project.id %}" class=""><button class="u-button">LIVE DEMO</button></a>
+                                <a href="{{project.source_link}}" class=""><button class="u-button">CODE</button></a>
                             </div>
                         </div>
-                        <div class="card-btns">
-                            <a href="{% url 'base_app:project' project.id %}" class=""><button class="u-button">LIVE DEMO</button></a>
-                            <a href="{{project.source_link}}" class=""><button class="u-button">CODE</button></a>
-                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
-
 {% endblock projectsCard %}
 
 {% block about %}
@@ -98,40 +95,39 @@
 {% endblock about %}
 
 {% block contact %}
-
-<div class="title-card">
-    <div class="container">
-        <div class="title-card-banner">
-            <h3>Contact</h3>
+<div id="scroll-to-contact">
+    <div class="title-card">
+        <div class="container">
+            <div class="title-card-banner">
+                <h3>Contact</h3>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="container">
-    <div class="contact-text"><p>Interested in working together? Let's connect via email</p></div>
-    <form id="contact-form" class='cont-form' action="{% url 'base_app:base' %}" method="POST">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="form-group">
-                <div class="contact-field">{{ field|add_class:"form-control" }}</div>
-                {% if field.errors %}
-                <div class="alert alert-danger">
-                    {% for error in field.errors %}
-                    <p>{{ error }}</p>
-                    {% endfor %}
+    <div class="container">
+        <div class="contact-text"><p>Interested in working together? Let's connect via email</p></div>
+        <form id="contact-form" class='cont-form' action="{% url 'base_app:base' %}" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <div class="contact-field">{{ field|add_class:"form-control" }}</div>
+                    {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </form>
-    <div class="form-btn"><button class="u-button" type="submit" form="contact-form" value="Submit">SEND</button></div>
-    <script>
-        var message = "{{ form_message }}";
-        if (message) {
-          alert(message);
-          window.location.replace("{% url 'base_app:base' %}");
-        }
-    </script>
+            {% endfor %}
+        </form>
+        <div class="form-btn"><button class="u-button" type="submit" form="contact-form" value="Submit">SEND</button></div>
+        <script>
+            var message = "{{ form_message }}";
+            if (message) {
+            alert(message);
+            window.location.replace("{% url 'base_app:base' %}");
+            }
+        </script>
+    </div>
 </div>
-
 {% endblock contact %}

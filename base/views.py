@@ -16,7 +16,7 @@ def base(request):
 
     if request.method == 'POST' and form.is_valid():
         form.save()
-        form_message = "I will get back to you ASAP!"
+        form_message = "Thank you for contacting, I will get back to you ASAP!"
 
     context = {
         'profile': profile,
