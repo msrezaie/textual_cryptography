@@ -24,6 +24,7 @@
     const menu = document.querySelector(".menu-list");
     const menuBtn = document.querySelector(".menu-btn");
     const cancelBtn = document.querySelector(".cancel-btn");
+    const contactBtn = document.querySelector(".nav-item");
 
     menuBtn.onclick = ()=>{
         menu.classList.add("active");
@@ -34,6 +35,11 @@
     cancelBtn.onclick = ()=>{
         menu.classList.remove("active");
         navbar.classList.remove("active");
+        menuBtn.classList.remove("hide");
+    }
+
+    contactBtn.onclick = ()=>{
+        menu.classList.remove("active");
         menuBtn.classList.remove("hide");
     }
 
