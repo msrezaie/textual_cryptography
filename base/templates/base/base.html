@@ -49,7 +49,7 @@
                         <div class="projects-card card h-100">
                             <div class="proj-img"><img class="card-img-top" src="{{project.featured_image.url}}" alt="..."></div>
                             <div class="card-body">
-                                <h3 class="card-title">{{project.title}}</h3>
+                                <h4 class="card-title">{{project.title}}</h4>
                                 <p class="card-text">{{project.short_description}}</p>
                                 <div class="project-tags">
                                     {% for tag in project.tags.all %}
@@ -60,10 +60,10 @@
                                 </div>
                             </div>
                             <div class="card-btns">
-                                {% if project.source_link == "None" %}
-                                    <a href="#" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
+                                {% if project.demo_link == "None" %}
+                                    <a href="{{project.demo_link}}" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
                                 {% else %}
-                                    <a href="#" target="_blank" class=""><button class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
+                                    <a href="{{project.demo_link}}" target="_blank" class=""><button class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
                                 {% endif %}
                                 {% if project.source_link == "None" %}
                                     <a href="{{project.source_link}}" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-brands fa-github"></i>Code</button></a>
