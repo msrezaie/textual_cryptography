@@ -34,14 +34,17 @@ class Profile(models.Model):
 
 class Skill(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null= True, blank=True)
-    name = models.CharField(max_length=200, null= True, blank=True)
-    description = models.TextField(null= True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
+    STACK_CHOICES = [
+        ('front-end', 'Front-end'),
+        ('back-end', 'Back-end'),
+    ]
+    stack = models.CharField(choices=STACK_CHOICES, max_length=20, blank=True)
+    skill = models.CharField(max_length=200, null= True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     
     def __str__(self):
-        return str(self.name)
+        return str(self.skill)
 
 
 class Project(models.Model):
@@ -50,8 +53,8 @@ class Project(models.Model):
     short_description = models.TextField(max_length=200, null=True, blank=True)
     featured_image = models.ImageField(upload_to='images/',
         null=True, blank=True, default="no-image.jpg")
-    demo_link = models.CharField(max_length=2000, null=True, blank=True)
-    source_link = models.CharField(max_length=2000, null=True, blank=True)
+    demo_link = models.CharField(default="None", max_length=2000, null=True, blank=True)
+    source_link = models.CharField(default="None", max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
     # unique attribute meaning: no other value can have

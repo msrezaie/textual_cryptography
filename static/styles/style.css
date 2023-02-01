@@ -24,7 +24,7 @@ html {
 }
 
 .u-button:hover{
-  color: silver;
+  text-decoration: underline;
 }
 
 .banner{
@@ -76,8 +76,8 @@ html {
 .tag-pill h6{
   text-align: center;
   padding: 0px 5px;
-  font-size: 13px;
-  color: grey;
+  font-size: 14px;
+  color: rgb(105, 89, 89);
 }
 
 .tag-pill{
@@ -362,12 +362,56 @@ html {
 /* PROJECTS STYLING END */
 
 /* ABOUT ME STYLING */
-.about-me{
+
+.about-me-lines{
+  font-size: 18px;
   padding: 20px 0;
 }
 
-.about-me h5{
-  padding: 20px 0;
+.about-me-lines p{
+  padding: 10px 0;
+}
+
+.skill-stack ul{
+  list-style: none;
+  padding: 10px;
+}
+
+.skill-title{
+  padding: 30px 0;
+}
+
+.skill-pill{
+  background-color: white;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 100px;
+  box-shadow: 1px 2px 5px 0px rgba(20, 19, 61, 0.2);
+}
+
+.skill-pill li{
+  font-size: 15px;
+  color: #14133d;
+}
+
+.resume-dl button {
+  padding: 2px;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #14133d;
+  transition: all 0.1s;
+}
+
+.resume-dl button:hover {
+  text-decoration: underline;
+}
+
+.resume-dl button:disabled {
+  background-color: #ddd;
+  color: #888;
+  text-decoration: none;
+  cursor: default;
 }
 /* ABOUT ME STYLING END */
 
@@ -428,7 +472,6 @@ html {
 }
 
 .footer-card .social-list{
-  list-style: none;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;

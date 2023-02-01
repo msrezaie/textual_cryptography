@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block banner-profile %}
+
 <div class="banner">
     <div class="profile">
         <div class="row">
@@ -21,15 +22,17 @@
                             <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
                         {% endif %}
                     </div>
-                    <div class="profile-proj-btn"><button onclick="scrollToBlock('scroll-to-projects')" type="button" class="u-button">MY PROJECTS</button></div>
+                    <div class="profile-proj-btn"><button onclick="scrollToBlock('scroll-to-projects')" type="button" class="u-button"><i style="margin-right: 5px;" class="fa-sharp fa-solid fa-diagram-project"></i>My Projects</button></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock banner-profile %}
 
 {% block projectsCard %}
+
 <div id="scroll-to-projects">
     <div class="title-card">
         <div class="container">
@@ -57,8 +60,16 @@
                                 </div>
                             </div>
                             <div class="card-btns">
-                                <a href="{% url 'base_app:project' project.id %}" class=""><button class="u-button">LIVE DEMO</button></a>
-                                <a href="{{project.source_link}}" class=""><button class="u-button">CODE</button></a>
+                                {% if project.source_link == "None" %}
+                                    <a href="#" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
+                                {% else %}
+                                    <a href="#" target="_blank" class=""><button class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
+                                {% endif %}
+                                {% if project.source_link == "None" %}
+                                    <a href="{{project.source_link}}" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-brands fa-github"></i>Code</button></a>
+                                {% else %}
+                                    <a href="{{project.source_link}}" target="_blank" class=""><button class="u-button"><i style="margin-right: 5px" class="fa-brands fa-github"></i>Code</button></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -67,6 +78,7 @@
         </div>
     </div>
 </div>
+
 {% endblock projectsCard %}
 
 {% block about %}
@@ -78,23 +90,72 @@
         </div>
     </div>
 </div>
-
 <div class="container">
-    <div class="about-me">
-        <h5>{{profile.line1}}</h5>
-        <h5>{{profile.line2}}</h5>
-        <h5>{{profile.line3}}</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="about-me-lines">
+                <p>{{profile.line1}}</p>
+                <p>{{profile.line2}}</p>
+                <p>{{profile.line3}}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md">
+                    <div class="skill-title text-center">
+                        <h5>Technologies that I have worked with</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row skill-stack">
+                <div class="col-6">
+                    <div class="container text-center">
+                        <h5>Front-end</h5>
+                        <ul>
+                        {% for skill in profile.skill_set.all %}
+                            {% if skill.stack == 'front-end' %}
+                            <div style="margin: auto auto 5px auto" class="skill-pill">
+                                <li>{{ skill.skill }}</li>    
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="container text-center">
+                        <h5>Back-end</h5>
+                        <ul>
+                            {% for skill in profile.skill_set.all %}
+                                {% if skill.stack == 'back-end' %}
+                                <div style="margin: auto auto 5px auto" class="skill-pill">
+                                    <li>{{ skill.skill }}</li>    
+                                </div>  
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    {% if profile.resume %}
-        <a href="{{ profile.resume.url }}"><button>Download Resume</button></a>
-    {% else %}
-        <button disabled>Download Resume</button>
-    {% endif %}
+    <div class="row">
+        <div class="container">
+            <div class="resume-dl">
+                {% if profile.resume %}
+                    <a href="{{ profile.resume.url }}"><button><i style="padding: 0 5px" class="fa-solid fa-download"></i>Resume</button></a>
+                {% else %}
+                    <button disabled>Download Resume</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock about %}
 
 {% block contact %}
+
 <div id="scroll-to-contact">
     <div class="title-card">
         <div class="container">
@@ -130,4 +191,5 @@
         </script>
     </div>
 </div>
+
 {% endblock contact %}
