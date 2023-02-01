@@ -6,7 +6,8 @@ import os
 
 class Page(models.Model):
     landing_page_background = models.ImageField(upload_to='images/', null=True, blank=True)
-
+    logo = models.ImageField(upload_to='images/', null=True, blank=True)
+    
     def __str__(self):
         return os.path.basename(self.landing_page_background.name)
 
