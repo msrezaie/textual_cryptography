@@ -2,7 +2,7 @@
 [![Made with Python](https://img.shields.io/badge/Python<=3.8-blue?logo=python&logoColor=white)](https://python.org) 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 
-A portfolio website is a must-have for any person who wants to showcase their skills, experience, and projects to the world, especially software developers. This project provides a template for creating a simple and professional-looking personal portfolio website, showcasing some the projects that I have done, and some that is in progress.
+A portfolio website is a must-have for any person who wants to showcase their skills, experience, and projects to the world, especially software developers. This project provides a template for creating a simple and professional-looking personal portfolio website, showcasing some of the projects that I have done, and some that are in progress.
 
 
 ## Features
