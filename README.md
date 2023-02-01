@@ -18,6 +18,7 @@ This project uses the following technologies:
 
 - HTML for markup structure of the webpages
 - CSS and JavaScript for styling
+- Bootstrap used as the front-end framework in order to implement responsiveness
 - Django as the web framework, used for managing the urls and connection with database models of the project
 - SQLite is used for storing the and dynamically accessing the data used throughout the webpages
 - Python is used as the programming language in order to connect the front-end templates to the back-end and provide functionality
