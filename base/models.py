@@ -1,4 +1,3 @@
-from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
