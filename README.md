@@ -7,8 +7,7 @@
 ![](https://img.shields.io/badge/Hosting-PythonAnywhere-blue?)
 [![](https://img.shields.io/badge/License-MIT-blue?/)](https://www.gnu.org/licenses/MIT)
 
-A portfolio website is a must-have for any person who wants to showcase their skills, experience, and projects to the world, especially software developers. This project provides a template for creating a simple and professional-looking personal portfolio website, showcasing some of the projects that I have done, and some that are in progress.
-
+A portfolio website is a must-have for any person who wants to showcase their skills, experience, and projects to the world, especially software developers. This project is created with a simple and professional-looking design suited for a personal portfolio website, showcasing some of the projects that I have done, and some that are in progress.
 
 ## Access
 
@@ -37,7 +36,7 @@ This project uses the following technologies:
 
 
 ## Implementation
-This portfolio project was built using the Django web framework and is hosted on PythonAnywhere. The media files, such as images and documents, are stored in an AWS S3 bucket. The database models are stored in SQLite.
+This portfolio project is built using Django web framework and is hosted on PythonAnywhere. The media files, such as images and documents, are stored in an AWS S3 bucket. The database models are stored in SQLite.
 
 ### Packages Used
 - **WhiteNoise**: is used to serve static files (CSS & JavaScript) in my Django project.
