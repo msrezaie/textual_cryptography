@@ -20,6 +20,10 @@ html {
   transform: translate(-50%, -50%);
 }
 
+.not-found img{
+  max-width: 200px;
+}
+
 .not-found .card{
   padding: 5px 20px;
 }

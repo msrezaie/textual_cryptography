@@ -36,3 +36,6 @@ def base(request):
     # Render the template with the context data and return it as the response
     return render(request, "base/base.html", context)
 
+def page_not_found(request, exception):
+    page = Page.objects.first()
+    return render(request, '404.html', {'page': page})
