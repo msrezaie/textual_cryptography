@@ -54,8 +54,8 @@ class Project(models.Model):
     short_description = models.TextField(max_length=200, null=True, blank=True)
     featured_image = models.ImageField(upload_to='images/',
         null=True, blank=True)
-    demo_link = models.CharField(default="None", max_length=2000, null=True, blank=True)
-    source_link = models.CharField(default="None", max_length=2000, null=True, blank=True)
+    demo_link = models.CharField(default=None, max_length=2000, null=True, blank=True)
+    source_link = models.CharField(default=None, max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
     created = models.DateTimeField(auto_now_add=True)
     # unique attribute meaning: no other value can have

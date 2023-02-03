@@ -1,5 +1,4 @@
-# .gitignore
-
-# ignore the following directories
+# ignore the following
 /.vscode/
 /static/
+__pycache__/
