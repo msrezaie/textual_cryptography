@@ -6,6 +6,7 @@ import os
 class Page(models.Model):
     landing_page_background = models.ImageField(upload_to='images/', null=True, blank=True)
     logo = models.ImageField(upload_to='images/', null=True, blank=True)
+    fourofour = models.ImageField(upload_to='images/', null=True, blank=True)
     
     def __str__(self):
         return os.path.basename(self.landing_page_background.name)
@@ -20,8 +21,8 @@ class Profile(models.Model):
     line2 = models.CharField(max_length=200, null= True, blank=True)
     line3 = models.CharField(max_length=200, null= True, blank=True)
     location = models.CharField(max_length=200, null= True, blank=True)
-    profile_image = models.ImageField(upload_to='images/', null=True, blank=True, default="no-image.jpg")
-    profile_background = models.ImageField(upload_to='images/', null=True, blank=True, default="no-image.jpg")
+    profile_image = models.ImageField(upload_to='images/', null=True, blank=True)
+    profile_background = models.ImageField(upload_to='images/', null=True, blank=True)
     social_github = models.CharField(max_length=200, null= True, blank=True)
     social_linkedin = models.CharField(max_length=200, null= True, blank=True)
     resume = models.FileField(upload_to='documents/', null=True, blank=True)
@@ -52,7 +53,7 @@ class Project(models.Model):
     long_description = models.TextField(null=True, blank=True)
     short_description = models.TextField(max_length=200, null=True, blank=True)
     featured_image = models.ImageField(upload_to='images/',
-        null=True, blank=True, default="no-image.jpg")
+        null=True, blank=True)
     demo_link = models.CharField(default="None", max_length=2000, null=True, blank=True)
     source_link = models.CharField(default="None", max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)

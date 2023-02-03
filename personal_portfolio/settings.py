@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rl&q=-hs3ew9uttrwb4v!n+9k1uf4p4a8(om!jny$so(achje8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['msrezaie.pythonanywhere.com', 'localhost', '127.0.0.1']
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'cryptoden',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,18 @@ MEDIA_ROOT = BASE_DIR / 'static/uploads/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AWS S3 Settings:
+
+# Letting Django know that an S3 bucket is being used for storing media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Setting AWS Access Keys for the created IAM user in order to access the S3 bucket
+AWS_ACCESS_KEY_ID = 'AKIA26CNWS55TWAYEHSU'
+AWS_SECRET_ACCESS_KEY = '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'
+
+# Letting django know of the name of the S3 bucket
+AWS_STORAGE_BUCKET_NAME = 'msr-portfolio'
+
+# Removing the query parameter authentication from generated URLs 
+AWS_QUERYSTRING_AUTH = False
