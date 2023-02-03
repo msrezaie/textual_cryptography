@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 import uuid
 import os
 
@@ -7,6 +6,7 @@ class Page(models.Model):
     landing_page_background = models.ImageField(upload_to='images/', null=True, blank=True)
     logo = models.ImageField(upload_to='images/', null=True, blank=True)
     fourofour = models.ImageField(upload_to='images/', null=True, blank=True)
+    link_preview_img = models.ImageField(upload_to='images/', null=True, blank=True)
     
     def __str__(self):
         return os.path.basename(self.landing_page_background.name)
