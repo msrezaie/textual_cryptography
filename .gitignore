@@ -2,3 +2,5 @@
 /.vscode/
 /static/
 __pycache__/
+
+personal_portfolio/private.py

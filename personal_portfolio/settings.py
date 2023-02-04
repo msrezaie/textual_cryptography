@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from . private import SECRET_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 from pathlib import Path
 # import os
 
@@ -19,9 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rl&q=-hs3ew9uttrwb4v!n+9k1uf4p4a8(om!jny$so(achje8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -144,14 +142,11 @@ MEDIA_ROOT = BASE_DIR / 'static/uploads/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # AWS S3 Settings:
 
 # Letting Django know that an S3 bucket is being used for storing media files
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# Setting AWS Access Keys for the created IAM user in order to access the S3 bucket
-AWS_ACCESS_KEY_ID = 'AKIA26CNWS55TWAYEHSU'
-AWS_SECRET_ACCESS_KEY = '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'
 
 # Letting django know of the name of the S3 bucket
 AWS_STORAGE_BUCKET_NAME = 'msr-portfolio'
