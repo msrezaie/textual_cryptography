@@ -53,27 +53,35 @@ html {
   background-size: cover;
   background-image: url('/static/uploads/images/bg.jpg');
   background-position: center;
-  background-attachment: fixed !important;
+  background-attachment: fixed;
   overflow: hidden;
+  object-fit: cover;
+  -webkit-background-size: cover;
 }
 
-@media (max-width: 568px) {
+@media only screen and (max-width: 568px) {
   .banner{
     width: 100%;
     height: 110vh;
     background-image: url('/static/uploads/images/bg.jpg');
-    background-attachment: fixed !important;
     overflow: hidden;
+    object-fit: cover;
+    background-attachment: fixed;
+    -webkit-background-attachment: fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
   }
 }
 
 .title-card .container{
   padding: 8px 0px;
-  background-size: cover;
   background-image: url('/static/uploads/images/bg.jpg');
   background-position: center;
   background-attachment: fixed;
   border-radius: 5px;
+  object-fit: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 .title-card{
@@ -128,8 +136,6 @@ html {
 
 /* NAVBAR STYLING START */
 .logo img{
-  width: 100%;
-  height: 100%;
   max-width: 100px;
   object-fit: cover;
 }
@@ -209,10 +215,9 @@ html {
 }
 
 /* unless the screen width is at least ...px, do not display */
-@media (max-width: 568px) {
+@media only screen and (max-width: 568px) {
   .logo img{
     width: 100%;
-    height: 100%;
     max-width: 80px;
     object-fit: cover;
   }

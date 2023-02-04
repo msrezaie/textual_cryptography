@@ -9,7 +9,7 @@ class Page(models.Model):
     link_preview_img = models.ImageField(upload_to='images/', null=True, blank=True)
     
     def __str__(self):
-        return os.path.basename(self.landing_page_background.name)
+        return os.path.basename(self.logo.name)
 
 
 class Profile(models.Model):

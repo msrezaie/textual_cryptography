@@ -63,12 +63,12 @@
                                 {% if project.demo_link %}
                                     <a href="{{project.demo_link}}" target="_blank" class=""><button class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
                                 {% else %}
-                                    <a href="{{project.demo_link}}" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button></a>
+                                    <button disabled class="u-button"><i style="margin-right: 5px" class="fa-solid fa-eye"></i>Live Demo</button>
                                 {% endif %}
                                 {% if project.source_link %}
                                     <a href="{{project.source_link}}" target="_blank" class=""><button class="u-button"><i style="margin-right: 5px" class="fa-brands fa-github"></i>Code</button></a>
                                 {% else %}
-                                    <a href="{{project.source_link}}" target="_blank" class=""><button disabled class="u-button"><i style="margin-right: 5px" class="fa-brands fa-github"></i>Code</button></a>
+                                    <button disabled class="u-button"><i style="margin-right: 5px" class="fa-brands fa-github"></i>Code</button>
                                 {% endif %}
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                 {% if profile.resume %}
                     <a href="{{ profile.resume.url }}"><button><i style="padding: 0 5px" class="fa-solid fa-download"></i>Resume</button></a>
                 {% else %}
-                    <button disabled class=".u-button"><i style="padding: 0 5px" class="fa-solid fa-download"></i>Resume</button></a>
+                    <button disabled class=".u-button"><i style="padding: 0 5px" class="fa-solid fa-download"></i>Resume</button>
                 {% endif %}
             </div>
         </div>
