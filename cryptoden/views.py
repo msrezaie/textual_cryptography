@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from . models import Operation
 
 # Create your views here.
 
 def index(request):
-    return render(request, "cryptoden/index.html")
+    operation = Operation.objects.all()
+    return render(request, "cryptoden/index.html", {'operations': operation})

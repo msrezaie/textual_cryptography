@@ -1,20 +1,189 @@
+{% load static %}
+<script src="{% static 'js/ciphers.js' %}"></script>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md"><img src="" alt=""><h2>Crypto Den</h2></div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <h3>Options</h3>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/76d03bfb37.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/cryptoden-style.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="">
+    <title>CryptoDen</title>
+</head>
+<body>
+    <section class="container">
+        <div class="row text-center">
+            <div class="col-md">
+                <div class="p-4">
+                    <h2>CryptoDen</h2>
+                </div>
+            </div>
         </div>
-        <div class="col-2">
-            <h4>Buttons</h4>
+        <div class="card-c">
+            <div class="row">
+                <div class="col-md">
+                    <div class="m-3">
+                        <h3>Options</h3>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="settings d-flex flex-column p-4">
+                                <label for="operation-select">Operation</label>
+                                <label for="cipher-select">Cipher</label>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="settings d-flex flex-column p-4">
+                                <select id="operation-select" onchange="updateCiphers(); updateOperationDescription(); updateCipherDescription();">
+                                    {% for operation in operations %}
+                                        <option value="{{ operation.id }}">{{ operation.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <select id="cipher-select" onchange="updateCipherDescription();">
+                                    <option value="">Select Operation First</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="p-4">
+                                <label for="">Keys</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="keys p-4">
+                                <div id="key-caesar" style="display:block;">
+                                    <input type="number" id="caesar-key" placeholder="Enter the shift value" oninput="validateInput(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-4">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="p-text form-floating">
+                            <textarea class="form-control" placeholder="Type your plaintext here" id="plainTextarea" style="height: 100%"></textarea>
+                            <label for="plainTextarea">Plaintext</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="d-flex flex-column">
+                            <button type="button" class="btn btn-light">Encrypt</button>
+                            <button type="button" class="btn btn-light">Decrypt</button>
+                            <button type="button" class="btn btn-light">Clear</button>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="c-text form-floating">
+                            <textarea class="form-control" placeholder="Type your ciphertext here" id="cipherTextarea" style="height: 100%"></textarea>
+                            <label for="cipherTextarea">Encrypted Text</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md">
+                    <div class="m-3">
+                        <h3>Description</h3>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md">
+                    <div class="p-4">
+                        <p id="operation-desc">"op-desc"</p>
+                    </div>
+                    <div class="text-center">
+                        <h6>Implementation</h6>
+                    </div>
+                    <div class="p-4">
+                        <p id="cipher-desc">"ci-desc"</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-6">
-            <textarea id="encrypt" name="" rows="4" cols="50">
-            </textarea>
-            <textarea id="decrypt" name="" rows="4" cols="50">
-            </textarea>
-        </div>
-    </div>
-</div>
+    </section>
+</body>
+<script>
+    function validateInput(input) {
+        if (input.value > 25) {
+            input.value = 25;
+        }
+    }
+
+    var operations = {
+        {% for operation in operations %}
+        {{ operation.id }}: [
+            {% for cipher in operation.cipher.all %}
+            "{{ cipher.name }}",
+            {% endfor %}
+        ],
+        {% endfor %}
+    };
+
+    var operationDescs = {
+        {% for operation in operations %}
+        {{ operation.id }}:"{{ operation.desc }}",
+        {% endfor %}
+    };
+
+    var cipherDescs = {
+        {% for operation in operations %}
+            {% for cipher in operation.cipher.all %}
+                "{{ cipher.name }}":"{{ cipher.desc|escapejs }}",
+            {% endfor %}
+        {% endfor %}
+    };
+
+    function updateCiphers() {
+        var operationId = document.getElementById("operation-select").value;
+        var ciphers = operations[operationId];
+        var cipherSelect = document.getElementById("cipher-select");
+    
+        cipherSelect.innerHTML = "";
+        if (ciphers) {
+            for (var i = 0; i < ciphers.length; i++) {
+                cipherSelect.innerHTML += "<option value='" + ciphers[i] + "'>" + ciphers[i] + "</option>";
+            }
+        } else {
+            cipherSelect.innerHTML = "<option value=''>Select Operation First</option>";
+        }
+    }
+    
+    function updateOperationDescription() {
+        var operationId = document.getElementById("operation-select").value;
+        var operationDesc = document.getElementById("operation-desc");
+        var desc = operationDescs[operationId];
+
+        operationDesc.innerHTML = desc;
+    }
+
+    function updateCipherDescription() {
+        var cipherName = document.getElementById("cipher-select").value;
+        var cipherDesc = document.getElementById("cipher-desc");
+        var desc = cipherDescs[cipherName];
+
+        cipherDesc.innerHTML = desc;
+    }
+
+    {% comment %} Run on start: {% endcomment %}
+    updateCiphers();
+    updateOperationDescription();
+    updateCipherDescription();
+</script>
+</html>
