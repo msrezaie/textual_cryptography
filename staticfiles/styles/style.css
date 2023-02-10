@@ -56,14 +56,15 @@ body {
   height: 100vh;
   overflow: hidden;
   background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
 @media (max-width: 568px) {
-  .banner{
+  .banner img{
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     overflow: hidden;
   }
 }
@@ -100,10 +101,6 @@ body {
   font-weight: 600;
 }
 
-.project-tags{
-  display: inline-flex;
-}
-
 .tag-pill h6{
   text-align: center;
   padding: 0px 5px;
@@ -124,7 +121,6 @@ body {
   padding: 5px 10px;
   margin-bottom: 5px;
 }
-
 /* UNIVERSAL STYLING */
 
 /* NAVBAR STYLING START */
@@ -209,13 +205,12 @@ body {
   top: 20px;
 }
 
-/* unless the screen width is at least ...px, do not display */
 @media (max-width: 568px) {
   .logo img{
     width: 100%;
     height: 100%;
     max-width: 80px;
-    object-fit: cover;
+    max-height: 50px;
   }
   
   .navbar .menu-list{
@@ -301,7 +296,7 @@ body {
 
 .img1 img{
   width: 100%;
-  height: 200px;
+  height: 180px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   object-fit: cover;
@@ -364,24 +359,29 @@ body {
   text-align: center;
 }
 
-
-@media (max-width: 868px) {
+@media (max-width: 568px) {
   .profile{
-    margin-top: 150px;
+    margin-top: 110px;
   }
 
   .profile-card{
-    width: 320px;
-    height: 540px;
+    width: 300px;
+    height: 520px;
+  }
+
+  .profile-title{
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
   }
 
   .img1 img{
-    height: 150px;
+    height: 140px;
   }
 
   .img2 img{
     width: 150px;
     height: 150px;
+    margin-top: -90px;
   }
 }
 /* PROFILE-CARD STYLING END */
@@ -405,10 +405,13 @@ body {
   border-top-right-radius: 5px;
   object-fit: cover;
 }
+
+.project-tags{
+  display: inline-flex;
+}
 /* PROJECTS STYLING END */
 
 /* ABOUT ME STYLING */
-
 .about-me-lines{
   font-size: 18px;
   padding: 20px 0;

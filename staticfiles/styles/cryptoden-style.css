@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@200;300;400;500;600;700&display=swap');
 
-/* UNIVERSAL STYLING */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
 }
 
 html {
@@ -27,6 +27,11 @@ hr{
   margin-left: 1%;
   margin-right: 1%;
   padding-bottom: 2%;
+  background-size: contain;
+}
+
+h2, h3, h5{
+  font-weight: 600;
 }
 
 .card-c {
@@ -63,4 +68,8 @@ hr{
   .ed-btns{
     flex-direction: row;
   }
+}
+
+a{
+  color: #424242;
 }
