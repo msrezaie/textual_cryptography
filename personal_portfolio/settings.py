@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'base',
     'cryptoden',
     'storages',
+    'cryptoden.ciphers',
 ]
 
 MIDDLEWARE = [

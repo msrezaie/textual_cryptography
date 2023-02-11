@@ -5,3 +5,4 @@ staticfiles/uploads/documents/
 __pycache__/
 
 personal_portfolio/private.py
+*.pyc
