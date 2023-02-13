@@ -111,42 +111,48 @@ function clearTextarea() {
 }
 
 function encryptionData() {
+    var selectedCipher = cipherSelect.value;
     var keyInputs = selectedCipherKeyInputFields();
     var plainTextValue = document.getElementById("plainTextarea").value;
     var inputForEncryption = {
-        plainText: plainTextValue,
-        keys: {},
+        method: "encrypt",
+        text: plainTextValue,
+        keys: {}
     };
-    for (var i = 0; i < keyInputs.length; i++) {
-        var input = keyInputs[i];
-        if (input.id == "no-key") {
-            inputForEncryption.keys[input.id] = "None";
-        } else {
-            inputForEncryption.keys[input.id] = input.value;
+    if (keyInputs[0].id === "null") {
+        inputForEncryption.keys[selectedCipher.toLowerCase()] = keyInputs[0].id;
+    } else if (keyInputs.length === 1) {
+        inputForEncryption.keys[selectedCipher.toLowerCase()] = keyInputs[0].value;
+    } else {
+        var keyValues = {};
+        for (var i = 0; i < keyInputs.length; i++) {
+            var input = keyInputs[i];
+            keyValues[input.id] = input.value;
         }
+        inputForEncryption.keys[selectedCipher.toLowerCase()] = keyValues;
     }
+    return inputForEncryption;
 }
 
-// function encryption() {
-//     let plainText = document.getElementById("plainTextarea").value;
-//     let caesarKey = document.getElementById("caesar-key").value;
+function decryptionData() {
+    //
+}
 
-//     // send the input to the views.py using AJAX
-//     const xhr = new XMLHttpRequest();
-//     xhr.open("POST", window.location.href, true);
-//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//     xhr.onreadystatechange = function() {
-//         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-//         // get the response and display it in the cipherTextarea
-//             document.getElementById("cipherTextarea").value = this.responseText;
-//         }
-//     };
-//     xhr.send(`plainText=${plainText}&caesarKey=${caesarKey}`);
-// }
+// send the input to the views.py using fetch API
+async function encryption() {
+    const data = encryptionData();
+    const response = await fetch(window.location.href, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    });
+    const result = await response.text();
+    document.getElementById("cipherTextarea").value = result;
+}
 
-document.getElementById("encryptBtn").addEventListener("click", encryptionData);
+// document.getElementById("encryptBtn").addEventListener("click", encryption);
 document.getElementById("clearBtn").addEventListener("click", clearTextarea);
-document.getElementById("decryptBtn").addEventListener("click", updateCiphers);
+document.getElementById("decryptBtn").addEventListener("click", encryptionData);
 
 
 updateCiphers();

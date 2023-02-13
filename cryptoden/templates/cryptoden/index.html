@@ -67,14 +67,14 @@
                             <div class="col-2">
                                 <div class="keys p-4">
                                     <div id="key-none" style="display: none;">
-                                        <input id="no-key" disabled placeholder="No Key Required">
+                                        <input id="null" disabled placeholder="No Key Required">
                                     </div>
                                     <div id="key-caesar" style="display: none;">
-                                        <input id="caesar-key" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="i.e. 1-25" oninput="caesarValidateInput(this)">
+                                        <input id="caesar" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="i.e. 1-25" oninput="caesarValidateInput(this)">
                                     </div>
                                     <div id="key-affine" style="display: none;">
-                                        <input id="affine-a" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: A" oninput="affineValidateInput(this)">
-                                        <input id="affine-b" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: B" oninput="affineValidateInput(this)">
+                                        <input id="a" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: A" oninput="affineValidateInput(this)">
+                                        <input id="b" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: B" oninput="affineValidateInput(this)">
                                     </div>
                                 </div>
                             </div>
