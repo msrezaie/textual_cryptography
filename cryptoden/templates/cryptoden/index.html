@@ -1,5 +1,4 @@
 {% load static %}
-<script src="{% static 'js/ciphers.js' %}"></script>
 
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'styles/cryptoden-style.css' %}">
-    <link rel="shortcut icon" type="image/x-icon" href="">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <title>Textual Cryptography</title>
 </head>
 <body>
@@ -51,7 +50,7 @@
                                             {% endif %}
                                         {% endfor %}
                                     </select>
-                                    <select id="cipher-select" onchange="updateCipherDescription(); updateCipherKey();">
+                                    <select id="cipher-select" onchange="updateCipherDescription(); updateCipherKey(); checkInput();">
                                         <option value="">Select Operation First</option>
                                     </select>
                                 </div>
@@ -68,10 +67,14 @@
                             <div class="col-2">
                                 <div class="keys p-4">
                                     <div id="key-none" style="display: none;">
-                                        <input disabled placeholder="No Key Required">
+                                        <input id="no-key" disabled placeholder="No Key Required">
                                     </div>
                                     <div id="key-caesar" style="display: none;">
-                                        <input id="caesar-key" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="i.e. 1-25" oninput="validateInput(this)">
+                                        <input id="caesar-key" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="i.e. 1-25" oninput="caesarValidateInput(this)">
+                                    </div>
+                                    <div id="key-affine" style="display: none;">
+                                        <input id="affine-a" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: A" oninput="affineValidateInput(this)">
+                                        <input id="affine-b" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: B" oninput="affineValidateInput(this)">
                                     </div>
                                 </div>
                             </div>
@@ -90,8 +93,8 @@
                         <div class="col-md-2">
                             <div class="ed-btns d-flex align-items-center">
                                 <button id="encryptBtn" class="btn btn-light p-2 m-2">Encrypt</button>
-                                <button class="btn btn-light p-2 m-2">Decrypt</button>
-                                <button class="btn btn-light p-1 m-4">Clear</button>
+                                <button id="decryptBtn" class="btn btn-light p-2 m-2">Decrypt</button>
+                                <button id="clearBtn" class="btn btn-light p-1 m-4">Clear</button>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -141,7 +144,7 @@
         </div>
     </footer>
 </body>
-<script>
+<script type="text/javascript">
     var operations = {
         {% for operation in operations %}
         {{ operation.id }}: [
@@ -151,13 +154,13 @@
         ],
         {% endfor %}
     };
-
+    
     var operationDescs = {
         {% for operation in operations %}
         {{ operation.id }}:"{{ operation.desc }}",
         {% endfor %}
     };
-
+    
     var cipherDescs = {
         {% for operation in operations %}
             {% for cipher in operation.cipher.all %}
@@ -165,84 +168,6 @@
             {% endfor %}
         {% endfor %}
     };
-
-    var cipherSelect = document.getElementById("cipher-select");
-
-    function updateCiphers() {
-        var operationId = document.getElementById("operation-select").value;
-        var ciphers = operations[operationId];
-    
-        cipherSelect.innerHTML = "";
-        if (ciphers) {
-            for (var i = 0; i < ciphers.length; i++) {
-                cipherSelect.innerHTML += "<option value='" + ciphers[i] + "'>" + ciphers[i] + "</option>";
-            }
-        } else {
-            cipherSelect.innerHTML = "<option value=''>Select Operation First</option>";
-        }
-    }
-    
-    function updateOperationDescription() {
-        var operationId = document.getElementById("operation-select").value;
-        var operationDesc = document.getElementById("operation-desc");
-        var desc = operationDescs[operationId];
-
-        operationDesc.innerHTML = desc;
-    }
-
-    function updateCipherDescription() {
-        var cipherName = document.getElementById("cipher-select").value;
-        var cipherDesc = document.getElementById("cipher-desc");
-        var desc = cipherDescs[cipherName];
-        
-        cipherDesc.innerHTML = desc;
-    }
-
-    var cipherKeyMap = {
-        "Caesar": "key-caesar",
-        "Atbash": "key-none",
-    };
-
-    function updateCipherKey() {
-        var selectedCipher = cipherSelect.value;
-        var selectedCipherKeyDiv = cipherKeyMap[selectedCipher];
-        var keyInputDiv = document.querySelectorAll(".keys div");
-
-        for (var i = 0; i < keyInputDiv.length; i++) {
-            keyInputDiv[i].style.display = "none";
-        }
-        
-        document.getElementById(selectedCipherKeyDiv).style.display = "block";
-    }
-
-    function validateInput(input) {
-        if (input.value > 25) {
-            input.value = 25;
-        }
-    }
-
-    function encrypt() {
-        let plainText = document.getElementById("plainTextarea").value;
-        let caesarKey = document.getElementById("caesar-key").value;
-
-        // send the input to the views.py using AJAX
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", window.location.href, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-            // get the response and display it in the cipherTextarea
-                document.getElementById("cipherTextarea").value = this.responseText;
-            }
-        };
-        xhr.send(`plainText=${plainText}&caesarKey=${caesarKey}`);
-    }
-    
-    document.getElementById("encryptBtn").addEventListener("click", encrypt);
-
-    updateCiphers();
-    updateOperationDescription();
-    updateCipherDescription();
-    updateCipherKey();
 </script>
+<script type="text/javascript" src="{% static 'js/cryptoden.js' %}"></script>
 </html>
