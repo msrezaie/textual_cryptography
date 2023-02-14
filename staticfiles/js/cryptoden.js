@@ -4,7 +4,7 @@ var cipherSelect = document.getElementById("cipher-select");
 var cipherKeyMap = {
     "Caesar": "key-caesar",
     "Atbash": "key-none",
-    "Affine": "key-affine",
+    // "Affine": "key-affine",
 };
 
 function selectedCipherKeyInputFields() {
@@ -124,21 +124,20 @@ function encryptionData() {
     var inputForEncryption = {
         method: "encrypt",
         text: plainTextValue,
-        keys: {}
+        cipher: selectedCipher.toLowerCase(),
     };
     if (keyInputs[0].id === "null") {
-        inputForEncryption.keys[selectedCipher.toLowerCase()] = keyInputs[0].id;
+        inputForEncryption.keys = keyInputs[0].id;
     } else if (keyInputs.length === 1) {
-        inputForEncryption.keys[selectedCipher.toLowerCase()] = keyInputs[0].value;
+        inputForEncryption.keys = keyInputs[0].value;
     } else {
         var keyValues = {};
         for (var i = 0; i < keyInputs.length; i++) {
             var input = keyInputs[i];
             keyValues[input.id] = input.value;
         }
-        inputForEncryption.keys[selectedCipher.toLowerCase()] = keyValues;
+        inputForEncryption.keys = keyValues;
     }
-    console.log(inputForEncryption);
     return inputForEncryption;
 }
 
@@ -160,7 +159,7 @@ async function encryption() {
 
 document.getElementById("encryptBtn").addEventListener("click", encryption);
 document.getElementById("clearBtn").addEventListener("click", clearTextarea);
-document.getElementById("decryptBtn").addEventListener("click", encryptionData);
+// document.getElementById("decryptBtn").addEventListener("click", encryptionData);
 
 
 updateCiphers();
