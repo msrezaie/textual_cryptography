@@ -18,12 +18,18 @@ function selectedCipherKeyInputFields() {
 
 function updateCiphers() {
     var operationId = document.getElementById("operation-select").value;
-    var ciphers = operations[operationId];
+    // 'opertaions' is taken from index.html
+    var loadedCiphers = ciphers[operationId];
 
     cipherSelect.innerHTML = "";
-    if (ciphers) {
-        for (var i = 0; i < ciphers.length; i++) {
-            cipherSelect.innerHTML += "<option value='" + ciphers[i] + "'>" + ciphers[i] + "</option>";
+    
+    if (loadedCiphers) {
+        for (var i = 0; i < loadedCiphers.length; i++) {
+            if (loadedCiphers[i] in cipherKeyMap) {
+                cipherSelect.innerHTML += "<option value='" + loadedCiphers[i] + "'>" + loadedCiphers[i] + "</option>";
+            } else {
+                cipherSelect.innerHTML += "<option disabled value='" + loadedCiphers[i] + "'>" + loadedCiphers[i] + "</option>";
+            }
         }
     } else {
         cipherSelect.innerHTML = "<option value=''>Select Operation First</option>";
@@ -32,6 +38,7 @@ function updateCiphers() {
 
 function updateOperationDescription() {
     var operationId = document.getElementById("operation-select").value;
+    // 'operationDesc' is taken from index.html
     var operationDesc = document.getElementById("operation-desc");
     var desc = operationDescs[operationId];
 
@@ -79,7 +86,7 @@ function checkInput() {
     const encryptBtn = document.getElementById("encryptBtn");
     function checkEncryptInput() {
         for (var i = 0; i < keyInputs.length; i++) {
-            if (keyInputs[i].id == "no-key") {
+            if (keyInputs[i].id == "null") {
                 if (plainTextarea.value.length > 0) {
                     encryptBtn.disabled = false;
                 } else {
@@ -131,6 +138,7 @@ function encryptionData() {
         }
         inputForEncryption.keys[selectedCipher.toLowerCase()] = keyValues;
     }
+    console.log(inputForEncryption);
     return inputForEncryption;
 }
 
@@ -150,7 +158,7 @@ async function encryption() {
     document.getElementById("cipherTextarea").value = result;
 }
 
-// document.getElementById("encryptBtn").addEventListener("click", encryption);
+document.getElementById("encryptBtn").addEventListener("click", encryption);
 document.getElementById("clearBtn").addEventListener("click", clearTextarea);
 document.getElementById("decryptBtn").addEventListener("click", encryptionData);
 
