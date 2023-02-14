@@ -1,4 +1,4 @@
-def atbash(text):
+def encrypt(text):
     result = ""
     try:
         for char in text:
