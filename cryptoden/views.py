@@ -10,24 +10,21 @@ import importlib
 def index(request):
     if request.method == 'POST':
         recieved_data = json.loads(request.body.decode("utf-8"))
-        keys = recieved_data['keys']
-        for cipher_name, key_value in keys.items():
-        # Extract the cipher name from the key name
-            try:
-                # Import the cipher module
-                module = importlib.import_module(f'cryptoden.ciphers.{cipher_name}')
-                # Get the plaintext value
-                plaintext = recieved_data['text']
-                # Call the encrypt() or decrypt() method based on the operation
-                # result = module.encrypt(plaintext, int(key_value))
-                cipher_function = getattr(module, "encrypt")
-                # Use the result
-                # print()
-                result = cipher_function(plaintext, int(key_value))
-                return HttpResponse(result)
+        # Get values from JSON
+        keys, cipher, method, text = recieved_data['keys'], recieved_data['cipher'], recieved_data['method'], recieved_data['text']
 
-            except ImportError:
-                print(f"Error: the cipher '{cipher_name}' was not found.")
+        try:
+            # Import the cipher module
+            module = importlib.import_module(f'cryptoden.ciphers.{cipher}')
+
+            cipher_function = getattr(module, method)
+
+            result = cipher_function(text, keys)
+            
+            return HttpResponse(result)
+
+        except ImportError:
+            print(f"Error: the cipher '{cipher}' was not found.")
 
     operation = Operation.objects.all()
     page = Page.objects.first()

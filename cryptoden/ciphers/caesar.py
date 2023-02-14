@@ -4,6 +4,7 @@ field = string.ascii_uppercase
 
 
 def encrypt(text, key):
+    key = int(key)
     text = text.upper()
     encrypted = []
     for i in text:

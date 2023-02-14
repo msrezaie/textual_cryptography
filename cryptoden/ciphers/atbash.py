@@ -1,4 +1,4 @@
-def encrypt(text):
+def encrypt(text, keys='null'):
     result = ""
     try:
         for char in text:
