@@ -20,6 +20,7 @@ def encrypt(text, key):
 
 
 def decrypt(text, key):
+    key = int(key)
     text = text.upper()
     decrypted = []
     for i in text:

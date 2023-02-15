@@ -1,4 +1,4 @@
-def encrypt(text, keys='null'):
+def encrypt(text, key='null'):
     result = ""
     try:
         for char in text:
@@ -11,3 +11,6 @@ def encrypt(text, keys='null'):
         return result
     except ValueError:
         return "Error!"
+
+def decrypt(text, key='null'):
+    return encrypt(text, key)
