@@ -5,6 +5,9 @@ var cipherKeyMap = {
     "Caesar": "key-caesar",
     "Atbash": "key-none",
     // "Affine": "key-affine",
+    "Reverse": "key-none",
+    "Feistel": "key-none",
+    "XOR": "key-xor",
 };
 
 function selectedCipherKeyInputFields() {
@@ -48,6 +51,7 @@ function updateOperationDescription() {
 function updateCipherDescription() {
     var cipherName = document.getElementById("cipher-select").value;
     var cipherDesc = document.getElementById("cipher-desc");
+
     var desc = cipherDescs[cipherName];
     
     cipherDesc.innerHTML = desc;
@@ -68,9 +72,18 @@ function updateCipherKey() {
     document.getElementById(selectedCipherKeyDiv).style.display = "block";
 }
 
+// Key input validation
 function caesarValidateInput(input) {
     if (input.value > 25) {
         input.value = 25;
+    }
+}
+
+function xorValidateInput(input) {
+    if (input.value > 127) {
+        input.value = 127;
+    } else if (input.value < 0) {
+        input.value = 0;
     }
 }
 
@@ -81,16 +94,16 @@ function affineValidateInput(input) {
 function checkInput() {
     var keyInputs = selectedCipherKeyInputFields();
     var plainTextarea = document.getElementById("plainTextarea");
+    var cipherTextarea = document.getElementById("cipherTextarea");
 
-    // get the encrypt button
     const encryptBtn = document.getElementById("encryptBtn");
+    const decryptBtn = document.getElementById("decryptBtn");
+
     function checkEncryptInput() {
         for (var i = 0; i < keyInputs.length; i++) {
             if (keyInputs[i].id == "null") {
                 if (plainTextarea.value.length > 0) {
                     encryptBtn.disabled = false;
-                } else {
-                    encryptBtn.disabled = true;
                 }
             } else {
                 if (keyInputs[i].value.length > 0 && plainTextarea.value.length > 0) {
@@ -100,15 +113,44 @@ function checkInput() {
                 }
             }
         }
+        if (cipherTextarea.value.length > 0) {
+            decryptBtn.disabled = false;
+        } else {
+            decryptBtn.disabled = true;
+        }
+    };
+
+    function checkDecryptInput() {
+        for (var i = 0; i < keyInputs.length; i++) {
+            if (keyInputs[i].id == "null") {
+                if (cipherTextarea.value.length > 0) {
+                    decryptBtn.disabled = false;
+                }
+            } else {
+                if (keyInputs[i].value.length > 0 && cipherTextarea.value.length > 0) {
+                    decryptBtn.disabled = false;
+                } else {
+                    decryptBtn.disabled = true;
+                }
+            }
+        }
+        if (plainTextarea.value.length > 0) {
+            encryptBtn.disabled = false;
+        } else {
+            encryptBtn.disabled = true;
+        }
     };
     checkEncryptInput();
+    checkDecryptInput();
     // add event listeners to the inputs to re-validate the inputs when they change
     for (var i = 0; i < keyInputs.length; i++) {
-        if (keyInputs[i].id != "no-key") {
+        if (keyInputs[i].id != "null") {
             keyInputs[i].addEventListener("input", checkEncryptInput);
+            keyInputs[i].addEventListener("input", checkDecryptInput);
         }
     }
     plainTextarea.addEventListener("input", checkEncryptInput);
+    cipherTextarea.addEventListener("input", checkDecryptInput);
 };
 
 function clearTextarea() {
@@ -118,6 +160,8 @@ function clearTextarea() {
 }
 
 function encryptionData() {
+    var cipherTextarea = document.getElementById("cipherTextarea");
+
     var selectedCipher = cipherSelect.value;
     var keyInputs = selectedCipherKeyInputFields();
     var plainTextValue = document.getElementById("plainTextarea").value;
@@ -142,7 +186,27 @@ function encryptionData() {
 }
 
 function decryptionData() {
-    //
+    var selectedCipher = cipherSelect.value;
+    var keyInputs = selectedCipherKeyInputFields();
+    var cipherTextValue = document.getElementById("cipherTextarea").value;
+    var inputForDecryption = {
+        method: "decrypt",
+        text: cipherTextValue,
+        cipher: selectedCipher.toLowerCase(),
+    };
+    if (keyInputs[0].id === "null") {
+        inputForDecryption.keys = keyInputs[0].id;
+    } else if (keyInputs.length === 1) {
+        inputForDecryption.keys = keyInputs[0].value;
+    } else {
+        var keyValues = {};
+        for (var i = 0; i < keyInputs.length; i++) {
+            var input = keyInputs[i];
+            keyValues[input.id] = input.value;
+        }
+        inputForDecryption.keys = keyValues;
+    }
+    return inputForDecryption;
 }
 
 // send the input to the views.py using fetch API
@@ -155,11 +219,26 @@ async function encryption() {
     });
     const result = await response.text();
     document.getElementById("cipherTextarea").value = result;
+    checkInput();
+}
+
+async function decryption() {
+    const data = decryptionData();
+    const response = await fetch(window.location.href, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    });
+    const result = await response.text();
+    document.getElementById("plainTextarea").value = result;
+    checkInput();
 }
 
 document.getElementById("encryptBtn").addEventListener("click", encryption);
+
 document.getElementById("clearBtn").addEventListener("click", clearTextarea);
-// document.getElementById("decryptBtn").addEventListener("click", encryptionData);
+
+document.getElementById("decryptBtn").addEventListener("click", decryption);
 
 
 updateCiphers();

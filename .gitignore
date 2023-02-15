@@ -5,4 +5,4 @@ staticfiles/uploads/documents/
 __pycache__/
 
 personal_portfolio/private.py
-*.pyc
+personal_portfolio/__pycache__/settings.cpython-38.pyc

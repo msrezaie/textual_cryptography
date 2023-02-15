@@ -44,8 +44,7 @@
                                 <div class="settings d-flex flex-column p-4">
                                     <select id="operation-select" onchange="updateCiphers(); updateOperationDescription(); updateCipherDescription(); updateCipherKey();">
                                         {% for operation in operations %}
-                                        {% comment %} temporary: to only show the first method of cipher operation {% endcomment %}
-                                            {% if forloop.first %}
+                                            {% if operation.name != "Combination" %}
                                                 <option value="{{ operation.id }}">{{ operation.name }}</option>
                                             {% endif %}
                                         {% endfor %}
@@ -75,6 +74,9 @@
                                     <div id="key-affine" style="display: none;">
                                         <input id="a" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: A" oninput="affineValidateInput(this)">
                                         <input id="b" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: B" oninput="affineValidateInput(this)">
+                                    </div>
+                                    <div id="key-xor" style="display: none;">
+                                        <input id="xor" type="number" placeholder="i.e. 0-127" oninput="xorValidateInput(this)">
                                     </div>
                                 </div>
                             </div>
@@ -117,13 +119,13 @@
                 <div class="row">
                     <div class="col-md">
                         <div class="p-4">
-                            <p id="operation-desc">"op-desc"</p>
+                            <p id="operation-desc">"operation-description"</p>
                         </div>
                         <div class="text-center">
                             <h5>Implementation</h5>
                         </div>
                         <div class="p-4">
-                            <p id="cipher-desc">"ci-desc"</p>
+                            <p id="cipher-desc">"cipher-description"</p>
                         </div>
                     </div>
                 </div>
