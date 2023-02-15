@@ -113,11 +113,6 @@ function checkInput() {
                 }
             }
         }
-        if (cipherTextarea.value.length > 0) {
-            decryptBtn.disabled = false;
-        } else {
-            decryptBtn.disabled = true;
-        }
     };
 
     function checkDecryptInput() {
@@ -134,19 +129,14 @@ function checkInput() {
                 }
             }
         }
-        if (plainTextarea.value.length > 0) {
-            encryptBtn.disabled = false;
-        } else {
-            encryptBtn.disabled = true;
-        }
     };
     checkEncryptInput();
     checkDecryptInput();
     // add event listeners to the inputs to re-validate the inputs when they change
     for (var i = 0; i < keyInputs.length; i++) {
         if (keyInputs[i].id != "null") {
-            keyInputs[i].addEventListener("input", checkEncryptInput);
             keyInputs[i].addEventListener("input", checkDecryptInput);
+            keyInputs[i].addEventListener("input", checkEncryptInput);
         }
     }
     plainTextarea.addEventListener("input", checkEncryptInput);
@@ -160,8 +150,6 @@ function clearTextarea() {
 }
 
 function encryptionData() {
-    var cipherTextarea = document.getElementById("cipherTextarea");
-
     var selectedCipher = cipherSelect.value;
     var keyInputs = selectedCipherKeyInputFields();
     var plainTextValue = document.getElementById("plainTextarea").value;
