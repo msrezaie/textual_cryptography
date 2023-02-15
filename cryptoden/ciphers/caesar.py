@@ -4,32 +4,38 @@ field = string.ascii_uppercase
 
 
 def encrypt(text, key):
-    key = int(key)
-    text = text.upper()
-    encrypted = []
-    for i in text:
-        ind = field.find(i)
-        if ind != -1:
-            if i in text:
-                index = (field.find(i) + key) % len(field)
-                encrypted.append(field[index])
-        else:
-            encrypted.append(i)
+    try:
+        key = int(key)
+        text = text.upper()
+        encrypted = []
+        for i in text:
+            ind = field.find(i)
+            if ind != -1:
+                if i in text:
+                    index = (field.find(i) + key) % len(field)
+                    encrypted.append(field[index])
+            else:
+                encrypted.append(i)
 
-    return ''.join(encrypted)
+        return ''.join(encrypted)
+    except ValueError:
+        return "Error!"
 
 
 def decrypt(text, key):
-    key = int(key)
-    text = text.upper()
-    decrypted = []
-    for i in text:
-        ind = field.find(i)
-        if ind != -1:
-            if i in text:
-                index = (field.find(i) - key) % len(field)
-                decrypted.append(field[index])
-        else:
-            decrypted.append(i)
+    try:
+        key = int(key)
+        text = text.upper()
+        decrypted = []
+        for i in text:
+            ind = field.find(i)
+            if ind != -1:
+                if i in text:
+                    index = (field.find(i) - key) % len(field)
+                    decrypted.append(field[index])
+            else:
+                decrypted.append(i)
 
-    return ''.join(decrypted)
+        return ''.join(decrypted)
+    except ValueError:
+        return "Error!"
