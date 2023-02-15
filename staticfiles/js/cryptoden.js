@@ -6,7 +6,7 @@ var cipherKeyMap = {
     "Atbash": "key-none",
     // "Affine": "key-affine",
     "Reverse": "key-none",
-    "Feistel": "key-none",
+    // "Feistel": "key-none",
     "XOR": "key-xor",
 };
 
