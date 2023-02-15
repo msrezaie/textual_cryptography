@@ -74,8 +74,8 @@ function updateCipherKey() {
 
 // Key input validation
 function caesarValidateInput(input) {
-    if (input.value > 26) {
-        input.value = 26;
+    if (input.value > 25) {
+        input.value = 25;
     }
     input.value = input.value.replace(/[^0-9]/g, '');
 }
