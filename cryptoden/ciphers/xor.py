@@ -11,7 +11,7 @@ def encrypt(text, key):
 
             return ''.join(enc)
     except ValueError:
-        print("Invalid Entry", "Error!")
+        return "Error!"
 
 def decrypt(text, key):
     return encrypt(text, key)
