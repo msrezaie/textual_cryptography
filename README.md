@@ -47,7 +47,7 @@ This portfolio project is built using Django web framework and is hosted on Pyth
 
 ## Projects
 
-### Textual Cryptography APP (CryptoDen)
+### Textual Cryptography App (CryptoDen)
 Named ‘Cryptoden’, a cryptography app that allows users to encrypt and decrypt text using various encryption algorithms. It uses a modular design that enables the addition of new ciphers with ease.
 
 ### Created Using:
