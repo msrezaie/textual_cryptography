@@ -44,3 +44,24 @@ This portfolio project is built using Django web framework and is hosted on Pyth
 - **django-widget-tweaks**: provides a set of template tags which I used to add custom attributes to my contact form.
 - **django-storages**: is a package that provides support for working with various cloud-based storage solutions, including AWS S3.
 - **boto3**: is used to provide support for working with AWS services from within my Python web application.
+
+## Projects
+
+### Textual Cryptography APP (CryptoDen)
+Named ‘Cryptoden’, a cryptography app that allows users to encrypt and decrypt text using various encryption algorithms. It uses a modular design that enables the addition of new ciphers with ease.
+
+### Created Using:
+- **Django**: The web app is currently integerated as an 'app' to my personal portfolio Django project.
+- **Python**: The ciphers are implemented with Python.
+- **JavaScript**: is used for managing inputs, compiling the input into JSON and sending to the backend for encryption.
+- **Bootstrap**: is used as the front-end framework for structuring the design elements of the page.
+
+### Screenshots:
+Options section where users can choose their desired method of encryption/decryption and cipher
+
+<img width="800" src="https://github.com/msrezaie/personal_portfolio/blob/main/cryptoden/screenshots/cryptoden1.jpg"/>
+
+
+Based on the selected method and cipher, a brief description about the operation and selected cipher is presented to the user
+
+<img width="800" src="https://github.com/msrezaie/personal_portfolio/blob/main/cryptoden/screenshots/cryptoden2.jpg"/>
