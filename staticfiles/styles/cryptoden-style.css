@@ -73,3 +73,8 @@ h1, h3, h5{
 a{
   color: #424242;
 }
+
+#non-printable{
+  padding: 10px 40px;
+  font-size: 14px;
+}
