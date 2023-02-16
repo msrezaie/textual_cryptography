@@ -51,24 +51,6 @@ body {
   color: gray;
 }
 
-.banner{
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-}
-
-@media (max-width: 568px) {
-  .banner{
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-}
-
 .title-card .container{
   padding: 8px 0px;
   background-size: cover;
@@ -276,9 +258,14 @@ body {
 }
 /* NAVBAR STYLING END */
 
-/* PROFILE-CARD STYLING */
-.profile{
-  margin-top: 150px;
+/* BANNER STYLING */
+.banner-background{
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .profile-card{
@@ -359,13 +346,9 @@ body {
 }
 
 @media (max-width: 568px) {
-  .profile{
-    margin-top: 110px;
-  }
-
   .profile-card{
-    width: 300px;
-    height: 520px;
+    width: 320px;
+    height: 560px;
   }
 
   .profile-title{
@@ -383,7 +366,34 @@ body {
     margin-top: -90px;
   }
 }
-/* PROFILE-CARD STYLING END */
+
+@media (max-height: 480px) {
+  .profile-card{
+    width: 390px;
+    height: 360px;
+  }
+  
+  .profile-title{
+    font-size: 16px;
+    padding: 0 10px 0 10px;
+  }
+
+  .img1 img{
+    height: 100px;
+  }
+
+  .img2 img{
+    width: 130px;
+    height: 130px;
+    margin-top: -90px;
+  }
+
+  .profile-socials{
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+/* BANNER STYLING END */
 
 /* PROJECTS STYLING */
 .projects-card{
