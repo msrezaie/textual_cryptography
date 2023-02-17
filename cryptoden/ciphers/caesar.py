@@ -1,41 +1,25 @@
-import string
-
-field = string.ascii_uppercase
-
-
 def encrypt(text, key):
     try:
-        key = int(key)
-        text = text.upper()
         encrypted = []
-        for i in text:
-            ind = field.find(i)
-            if ind != -1:
-                if i in text:
-                    index = (field.find(i) + key) % len(field)
-                    encrypted.append(field[index])
+        for char in text:
+            if char.isalpha():
+                base = ord('A') if char.isupper() else ord('a')
+                encrypted.append(chr((ord(char) - base + int(key)) % 26 + base))
             else:
-                encrypted.append(i)
-
+                encrypted.append(char)
         return ''.join(encrypted)
     except ValueError:
         return "Error!"
 
-
 def decrypt(text, key):
     try:
-        key = int(key)
-        text = text.upper()
         decrypted = []
-        for i in text:
-            ind = field.find(i)
-            if ind != -1:
-                if i in text:
-                    index = (field.find(i) - key) % len(field)
-                    decrypted.append(field[index])
+        for char in text:
+            if char.isalpha():
+                base = ord('A') if char.isupper() else ord('a')
+                decrypted.append(chr((ord(char) - base - int(key)) % 26 + base))
             else:
-                decrypted.append(i)
-
+                decrypted.append(char)
         return ''.join(decrypted)
     except ValueError:
         return "Error!"
