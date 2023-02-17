@@ -53,7 +53,7 @@ Named ‘Cryptoden’, a cryptography app that allows users to encrypt and decry
 ### Created Using:
 - **Django**: The web app is currently integerated as an 'app' to my personal portfolio Django project.
 - **Python**: The ciphers are implemented with Python.
-- **JavaScript**: is used for managing inputs, compiling the input into JSON and sending to the backend for encryption.
+- **JavaScript**: is used for managing inputs, compiling the input into JSON and sending to the backend for encryption/decryption.
 - **Bootstrap**: is used as the front-end framework for structuring the design elements of the page.
 
 ### Screenshots:
