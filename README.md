@@ -40,6 +40,7 @@ This portfolio project is built using Django web framework and is hosted on Pyth
 
 ### Packages Used
 - **WhiteNoise**: is used to serve static files (CSS & JavaScript) in my Django project.
+- **django-widget-tweaks**: is used to tweak the form field rendering in templates, not in python-level form definitions.
 - **Pillow**: is implemented to provide support for working with images
 - **django-widget-tweaks**: provides a set of template tags which I used to add custom attributes to my contact form.
 - **django-storages**: is a package that provides support for working with various cloud-based storage solutions, including AWS S3.
