@@ -72,8 +72,11 @@
                                         <input id="caesar" type="number" placeholder="i.e. 1-25" oninput="caesarValidateInput(this)">
                                     </div>
                                     <div id="key-affine" style="display: none;">
-                                        <input id="a" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: A" oninput="affineValidateInput(this)">
-                                        <input id="b" type="number" pattern="\d{2}" title="Only 2 digits allowed" placeholder="Constant: B" oninput="affineValidateInput(this)">
+                                        <input id="a" type="number" placeholder="Not 13 or Even No." oninput="affineValidateInput(this)">
+                                        <input id="b" type="number" placeholder="Any Number" oninput="affineValidateInput(this)">
+                                    </div>
+                                    <div id="key-columnar" style="display: none;">
+                                        <input id="columnar" type="text" placeholder="any character/number">
                                     </div>
                                     <div id="key-xor" style="display: none;">
                                         <input id="xor" type="number" placeholder="i.e. 0-127" oninput="xorValidateInput(this)">

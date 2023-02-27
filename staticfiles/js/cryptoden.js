@@ -4,7 +4,7 @@ var cipherSelect = document.getElementById("cipher-select");
 var cipherKeyMap = {
     "Caesar": "key-caesar",
     "Atbash": "key-none",
-    // "Affine": "key-affine",
+    "Affine": "key-affine",
     "Reverse": "key-none",
     // "Feistel": "key-none",
     "XOR": "key-xor",
