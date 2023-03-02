@@ -8,6 +8,7 @@ var cipherKeyMap = {
     "Caesar": "key-caesar",
     "Atbash": "key-none",
     "Affine": "key-affine",
+    "Vigenere": "key-vigenere",
     "Reverse": "key-none",
     // "Feistel": "key-none",
     "XOR": "key-xor",
