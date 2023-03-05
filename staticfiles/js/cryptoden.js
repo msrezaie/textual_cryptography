@@ -11,6 +11,7 @@ var cipherKeyMap = {
     "Vigenere": "key-vigenere",
     "Reverse": "key-none",
     // "Feistel": "key-none",
+    "Polybius": "key-none",
     "XOR": "key-xor",
 };
 
