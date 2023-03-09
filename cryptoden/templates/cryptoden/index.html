@@ -44,7 +44,7 @@
                                 <div class="settings d-flex flex-column p-4">
                                     <select id="operation-select" onchange="updateCiphers(); updateOperationDescription(); updateCipherDescription(); updateCipherKey();">
                                         {% for operation in operations %}
-                                            {% if operation.name != "Combination" and operation.name != "Block" %}
+                                            {% if operation.name != "Block" %}
                                                 <option value="{{ operation.id }}">{{ operation.name }}</option>
                                             {% endif %}
                                         {% endfor %}
@@ -76,7 +76,11 @@
                                         <input id="b" type="number" placeholder="Any number" oninput="affineValidateInput(this)">
                                     </div>
                                     <div id="key-vigenere" style="display: none;">
-                                        <input id="vigenere" type="text" placeholder="any character/number">
+                                        <input id="vigenere" type="text" placeholder="Any Character/Number">
+                                    </div>
+                                    <div id="key-foursquare" style="display: none;">
+                                        <input id="key-1" type="text" placeholder="Any Character" oninput="">
+                                        <input id="key-2" type="text" placeholder="Any Character" oninput="">
                                     </div>
                                     <div id="key-xor" style="display: none;">
                                         <input id="xor" type="number" placeholder="i.e. 0-127" oninput="xorValidateInput(this)">

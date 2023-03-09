@@ -12,6 +12,7 @@ var cipherKeyMap = {
     "Reverse": "key-none",
     // "Feistel": "key-none",
     "Polybius": "key-none",
+    "Four Square": "key-foursquare",
     "XOR": "key-xor",
 };
 
