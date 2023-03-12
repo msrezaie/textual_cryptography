@@ -98,6 +98,7 @@ function caesarValidateInput(input) {
     }
     input.value = input.value.replace(/[^0-9]/g, '');
 }
+
 function xorValidateInput(input) {
     if (input.value > 127) {
         input.value = 127;
@@ -106,8 +107,8 @@ function xorValidateInput(input) {
     }
     input.value = input.value.replace(/[^0-9]/g, '');
 }
+
 function affineValidateInput(input) {
-    //
 }
 
 // The checkInput function checks if the required input fields have been filled out in order to enable the encryption and decryption buttons.
@@ -169,7 +170,8 @@ function checkInput() {
 function clearTextarea() {
     document.getElementById("plainTextarea").value = "";
     document.getElementById("cipherTextarea").value = "";
-    checkInput();
+    document.getElementById("encryptBtn").disabled = true;
+    document.getElementById("decryptBtn").disabled = true;
 }
 
 
@@ -256,8 +258,8 @@ async function decryption() {
 }
 
 document.getElementById("encryptBtn").addEventListener("click", encryption);
-document.getElementById("clearBtn").addEventListener("click", clearTextarea);
 document.getElementById("decryptBtn").addEventListener("click", decryption);
+document.getElementById("clearBtn").addEventListener("click", clearTextarea);
 
 // Calling necessary functions at the start of the application
 updateCiphers();
