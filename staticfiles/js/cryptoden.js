@@ -23,7 +23,6 @@ function selectedCipherKeyInputFields() {
     var selectedCipherKeyDiv = cipherKeyMap[selectedCipher];
     var selectedCipherKeyinputId = document.getElementById(selectedCipherKeyDiv);
     var keyInputs = selectedCipherKeyinputId.querySelectorAll("input");
-    
     return keyInputs;
 }
 
@@ -109,12 +108,13 @@ function xorValidateInput(input) {
 }
 
 function affineValidateInput(input) {
+    //
 }
 
 // The checkInput function checks if the required input fields have been filled out in order to enable the encryption and decryption buttons.
 // It retrieves the key input fields and text areas using their corresponding HTML element IDs and then sets the disabled attribute of the encryption and decryption buttons based on whether or not the input fields have been filled out.
 function checkInput() {
-    var keyInputs = selectedCipherKeyInputFields();
+    var keyInputs = selectedCipherKeyInputFields();  
     var plainTextarea = document.getElementById("plainTextarea");
     var cipherTextarea = document.getElementById("cipherTextarea");
 
@@ -122,36 +122,45 @@ function checkInput() {
     const decryptBtn = document.getElementById("decryptBtn");
 
     function checkEncryptInput() {
+        var numInputsWithValue = 0;
+        var hasNullInput = false;
+
         for (var i = 0; i < keyInputs.length; i++) {
-            if (keyInputs[i].id == "null") {
-                if (plainTextarea.value.length > 0) {
-                    encryptBtn.disabled = false;
-                }
-            } else {
-                if (keyInputs[i].value.length > 0 && plainTextarea.value.length > 0) {
-                    encryptBtn.disabled = false;
-                } else {
-                    encryptBtn.disabled = true;
-                }
+            if (keyInputs[i].id === "null") {
+                hasNullInput = true;
+            } else if (keyInputs[i].value.length > 0) {
+                numInputsWithValue++;
             }
+        }
+        if (numInputsWithValue === keyInputs.length && plainTextarea.value.length > 0) {
+            encryptBtn.disabled = false;
+        } else if (hasNullInput && plainTextarea.value.length > 0) {
+            encryptBtn.disabled = false;
+        } else {
+            encryptBtn.disabled = true;
         }
     };
 
     function checkDecryptInput() {
+        var numInputsWithValue = 0;
+        var hasNullInput = false;
+
         for (var i = 0; i < keyInputs.length; i++) {
-            if (keyInputs[i].id == "null") {
-                if (cipherTextarea.value.length > 0) {
-                    decryptBtn.disabled = false;
-                }
-            } else {
-                if (keyInputs[i].value.length > 0 && cipherTextarea.value.length > 0) {
-                    decryptBtn.disabled = false;
-                } else {
-                    decryptBtn.disabled = true;
-                }
+            if (keyInputs[i].id === "null") {
+                hasNullInput = true;
+            } else if (keyInputs[i].value.length > 0) {
+                numInputsWithValue++;
             }
         }
+        if (numInputsWithValue === keyInputs.length && cipherTextarea.value.length > 0) {
+            decryptBtn.disabled = false;
+        } else if (hasNullInput && cipherTextarea.value.length > 0) {
+            decryptBtn.disabled = false;
+        } else {
+            decryptBtn.disabled = true;
+        }
     };
+
     checkEncryptInput();
     checkDecryptInput();
     // add event listeners to the inputs to re-validate the inputs when they change
