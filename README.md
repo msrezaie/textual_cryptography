@@ -11,7 +11,7 @@ A portfolio website is a must-have for any person who wants to showcase their sk
 
 ## Access
 
-The project is currently hosted on pythonanywhere.com and can be accessed with the following link:
+My website is currently hosted on pythonanywhere.com and can be accessed with the following link:
 
 http://msrezaie.pythonanywhere.com/
 
