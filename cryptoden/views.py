@@ -5,6 +5,26 @@ from base.models import Profile
 import json
 import importlib
 
+def login(request):
+    page = Page.objects.first()
+    profile = Profile.objects.first()
+
+    context = {
+        'profile': profile,
+        'pages': page
+    }
+    return render(request, "cryptoden/login.html", context)
+
+def signup(request):
+    page = Page.objects.first()
+    profile = Profile.objects.first()
+
+    context = {
+        'profile': profile,
+        'pages': page
+    }
+    return render(request, "cryptoden/signup.html", context)
+
 @csrf_exempt  # disable CSRF protection
 def index(request):
     if request.method == 'POST':  # check if request method is POST
