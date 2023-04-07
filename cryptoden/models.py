@@ -1,6 +1,6 @@
-import os
 from django.contrib.auth.models import User
 from django.db import models
+import os
 
 class CryptodenUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
