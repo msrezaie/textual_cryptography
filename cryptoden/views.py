@@ -1,11 +1,37 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 from . models import Operation, Page
 from base.models import Profile
 import json
 import importlib
 
-def login(request):
+def userLogin(request):
+    page = Page.objects.first()
+    profile = Profile.objects.first()
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            print("Username not active")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('cryptoden:crypto-main')
+    context = {
+        'profile': profile,
+        'pages': page
+    }
+    return render(request, "cryptoden/user_login.html", context)
+
+def userSignup(request):
     page = Page.objects.first()
     profile = Profile.objects.first()
 
@@ -13,17 +39,7 @@ def login(request):
         'profile': profile,
         'pages': page
     }
-    return render(request, "cryptoden/login.html", context)
-
-def signup(request):
-    page = Page.objects.first()
-    profile = Profile.objects.first()
-
-    context = {
-        'profile': profile,
-        'pages': page
-    }
-    return render(request, "cryptoden/signup.html", context)
+    return render(request, "cryptoden/user_signup.html", context)
 
 @csrf_exempt  # disable CSRF protection
 def index(request):
