@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from . models import Operation, Page
 from base.models import Profile
@@ -11,6 +12,9 @@ def userLogin(request):
     page = Page.objects.first()
     profile = Profile.objects.first()
 
+    if request.user.is_authenticated:
+        return redirect('cryptoden:crypto-main')
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -18,18 +22,25 @@ def userLogin(request):
         try:
             user = User.objects.get(username=username)
         except:
-            print("Username not active")
+            print("User does not exist")
 
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
             return redirect('cryptoden:crypto-main')
+        else:
+            print("Username/Password incorrect!")
+
     context = {
         'profile': profile,
         'pages': page
     }
     return render(request, "cryptoden/user_login.html", context)
+
+def userLogout(request):
+    logout(request)
+    return redirect('cryptoden:crypto-login')
 
 def userSignup(request):
     page = Page.objects.first()
@@ -42,6 +53,7 @@ def userSignup(request):
     return render(request, "cryptoden/user_signup.html", context)
 
 @csrf_exempt  # disable CSRF protection
+@login_required(login_url='cryptoden:crypto-login')
 def index(request):
     if request.method == 'POST':  # check if request method is POST
         # Get JSON data from request body and decode it

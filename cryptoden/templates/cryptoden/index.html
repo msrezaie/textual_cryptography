@@ -12,6 +12,24 @@
             </div>
             <div class="card-c">
                 <div class="row">
+                    <div class="col-4">
+                        <div class="m-4">
+                            <h4>W3lc0m3</h4>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="m-4">
+                            <p><i>{{ request.user }}</i></p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="m-3">
+                            <a class="btn btn-light" href="{% url 'cryptoden:crypto-logout' %}">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
                     <div class="col-md">
                         <div class="m-3">
                             <h3>Options</h3>
