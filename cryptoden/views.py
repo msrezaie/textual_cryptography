@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
 from . models import Operation, Page
 from base.models import Profile
 import json
@@ -22,7 +23,7 @@ def userLogin(request):
         try:
             user = User.objects.get(username=username)
         except:
-            print("User does not exist")
+            messages.error(request, "User does not exist!")
 
         user = authenticate(request, username=username, password=password)
 
@@ -30,30 +31,19 @@ def userLogin(request):
             login(request, user)
             return redirect('cryptoden:crypto-main')
         else:
-            print("Username/Password incorrect!")
+            messages.error(request, "Username/Password incorrect!")
 
     context = {
         'profile': profile,
         'pages': page
     }
-    return render(request, "cryptoden/user_login.html", context)
+    return render(request, "cryptoden/login_register.html", context)
 
 def userLogout(request):
     logout(request)
     return redirect('cryptoden:crypto-login')
 
-def userSignup(request):
-    page = Page.objects.first()
-    profile = Profile.objects.first()
-
-    context = {
-        'profile': profile,
-        'pages': page
-    }
-    return render(request, "cryptoden/user_signup.html", context)
-
 @csrf_exempt  # disable CSRF protection
-@login_required(login_url='cryptoden:crypto-login')
 def index(request):
     if request.method == 'POST':  # check if request method is POST
         # Get JSON data from request body and decode it
