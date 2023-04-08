@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'base',
-    'cryptoden',
+    'cryptoden.apps.CryptodenConfig',
     'storages',
     'cryptoden.ciphers',
 ]
