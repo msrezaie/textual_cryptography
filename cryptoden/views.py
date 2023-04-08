@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from . models import Operation, Page
+from . forms import CryptodenRegisterForm
 from base.models import Profile
 import json
 import importlib
 
-def userLogin(request):
-    form_type = 'login'
+def userSignin(request):
+    form_type = 'signin'
     page = Page.objects.first()
     profile = Profile.objects.first()
 
@@ -39,14 +39,32 @@ def userLogin(request):
         'pages': page,
         'form_type': form_type
     }
-    return render(request, "cryptoden/login_register.html", context)
+    return render(request, "cryptoden/signin_register.html", context)
 
 def userRegister(request):
     form_type = 'register'
+    page = Page.objects.first()
+    profile = Profile.objects.first()
+    form = CryptodenRegisterForm()
+
+    if request.method == 'POST':
+        form = CryptodenRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('cryptoden:crypto-main')
+        else:
+            messages.error(request, "Something went wrong :(")
+        
     context = {
-        'form_type': form_type
+        'profile': profile,
+        'pages': page,
+        'form_type': form_type,
+        'form': form
     }
-    return render(request, "cryptoden/login_register.html", context)
+    return render(request, "cryptoden/signin_register.html", context)
 
 def userLogout(request):
     logout(request)
