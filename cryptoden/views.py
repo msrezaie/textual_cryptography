@@ -10,6 +10,7 @@ import json
 import importlib
 
 def userLogin(request):
+    form_type = 'login'
     page = Page.objects.first()
     profile = Profile.objects.first()
 
@@ -35,13 +36,21 @@ def userLogin(request):
 
     context = {
         'profile': profile,
-        'pages': page
+        'pages': page,
+        'form_type': form_type
+    }
+    return render(request, "cryptoden/login_register.html", context)
+
+def userRegister(request):
+    form_type = 'register'
+    context = {
+        'form_type': form_type
     }
     return render(request, "cryptoden/login_register.html", context)
 
 def userLogout(request):
     logout(request)
-    return redirect('cryptoden:crypto-login')
+    return redirect('cryptoden:crypto-main')
 
 @csrf_exempt  # disable CSRF protection
 def index(request):
