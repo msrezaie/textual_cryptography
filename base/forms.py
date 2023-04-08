@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm
 from . models import Contact
 
 class ContactForm(ModelForm):

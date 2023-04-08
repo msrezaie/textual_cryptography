@@ -12,7 +12,6 @@ def createCryptodenUser(sender, instance, created, **kwargs):
             user=instance,
             username=instance.username,
             email=instance.email,
-            name=instance.first_name
         )
 
 # Define a signal handler function for deleting the associated User instance when a CryptodenUser instance is deleted

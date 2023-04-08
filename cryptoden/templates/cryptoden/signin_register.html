@@ -11,29 +11,26 @@
                 </div>
             </div>
             <div class="card-c">
-                {% if form_type == 'login' %}
-                <div class="login-form">
-                    <h2>Login</h2>
-                    <form action="{% url 'cryptoden:crypto-login' %}" method="POST">
+                {% if form_type == 'signin' %}
+                <div class="signin-form">
+                    <h2>Sign in</h2>
+                    <form action="{% url 'cryptoden:crypto-signin' %}" method="POST">
                         {% csrf_token %}
                         <input type="text" name="username">
                         <input type="password" name="password">
-                        <input type="submit" value="Login">
-                        <p>First time user? <a href="{% url 'cryptoden:crypto-register' %}">Sign Up</a></p>
+                        <input type="submit" value="Sign in">
                     </form>
+                    <p>First time user? <a href="{% url 'cryptoden:crypto-register' %}">Sign Up</a></p>
                 </div>
                 {% else %}
                 <div class="register-form">
-                    <h2>Sign Up</h2>
-                    <form action="{% url 'cryptoden:crypto-login' %}" method="POST">
+                    <h2>Sign up</h2>
+                    <form action="{% url 'cryptoden:crypto-register' %}" method="POST">
                         {% csrf_token %}
-                        <input type="text" name="name">
-                        <input type="email" name="email">
-                        <input type="text" name="username">
-                        <input type="password" name="password">
-                        <input type="submit" value="Submit">
-                        <p>Already registered? <a href="{% url 'cryptoden:crypto-login' %}">Login</a></p>
+                        {{ form.as_p }}
+                        <input type="submit" value="Register">
                     </form>
+                    <p>Already registered? <a href="{% url 'cryptoden:crypto-signin' %}">Sign in</a></p>
                 </div>
                 {% endif %}
             </div>
