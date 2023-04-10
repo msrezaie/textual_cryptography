@@ -1,49 +1,14 @@
 {% extends 'cryptoden_main.html' %}
 
 {% block content %}
-    <div class="pattern" style="background-image: url('{{ pages.background.url }}');">
+    <div class="pattern-main" style="background-image: url('{{ pages.background.url }}');">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-md">
-                    <div class="p-4">
-                        <h1>Textual Cryptography</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="card-c">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="m-4">
-                            <h4>W3lc0m3</h4>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="m-4">
-                            <p><i>{{ request.user }}</i></p>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="m-4">
-                            {% if not request.user.is_authenticated %}
-                            <p>Sign in to save your usage history</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="m-3">
-                            {% if request.user.is_authenticated %}
-                            <a class="btn btn-light" href="{% url 'cryptoden:crypto-logout' %}">Logout</a>
-                            {% else %}
-                            <a class="btn btn-light" href="{% url 'cryptoden:crypto-signin' %}">Sign in</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
+            <div class="p-3"></div>
+            <div class="card-main">
+                <div class="row text-center">
                     <div class="col-md">
                         <div class="m-3">
-                            <h3>Options</h3>
+                            <h3>Encryptor/Decryptor</h3>
                         </div>
                     </div>
                 </div>
