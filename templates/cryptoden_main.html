@@ -13,7 +13,36 @@
     <title>Textual Cryptography</title>
 </head>
 <body>
-    
+    <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+            <div class="logo"><a href="{% url 'cryptoden:crypto-main' %}"><h2>Textual Cryptography</h2></a></div>
+            <ul class="menu-list navbar-nav">
+                <div class="icon cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-account' %}">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-signin' %}">Sign in</a>
+                </li>
+                {% endif %}
+                {% if not request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="signupBtn btn btn-light nav-link" href="{% url 'cryptoden:crypto-register' %}">Sign up</a>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="icon menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
