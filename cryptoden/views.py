@@ -66,6 +66,18 @@ def userRegister(request):
     }
     return render(request, "cryptoden/signin_register.html", context)
 
+def userAccount(request):
+
+    page = Page.objects.first()
+    profile = Profile.objects.first()
+
+    context = {
+        'profile': profile,
+        'pages': page,
+    }
+    return render(request, "cryptoden/account.html", context)
+
+
 def userLogout(request):
     logout(request)
     return redirect('cryptoden:crypto-main')
