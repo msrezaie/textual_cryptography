@@ -294,7 +294,6 @@ body {
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(20, 19, 61, 0.5);
-  align-items: center;
 }
 
 .img1 img{
@@ -495,7 +494,7 @@ body {
   font-weight: 500;
 }
 
-.form-group .contact-labels{
+.form-group{
   font-size: 16px;
   font-weight: 500;
 }
