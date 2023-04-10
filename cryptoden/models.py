@@ -9,7 +9,7 @@ class CryptodenUser(models.Model):
     username = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        return self.username
+        return self.email
     
 class Page(models.Model):
     background = models.ImageField(upload_to='images/', null=True, blank=True)
