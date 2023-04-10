@@ -1,39 +1,75 @@
 {% extends 'cryptoden_main.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
-    <div class="pattern" style="background-image: url('{{ pages.background.url }}');">
+    <div class="pattern-signin" style="background-image: url('{{ pages.background.url }}');">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-md">
-                    <div class="p-4">
-                        <h1>Textual Cryptography</h1>
+            <div class="p-2"></div>
+            {% if form_type == 'signin' %}
+            <div class="card-signin">
+                <div class="container">
+                    <div class="signin-title p-3 mb-2"><h2>Sign in</h2><hr></div>
+                    <div class="signin-form">
+                        <form action="{% url 'cryptoden:crypto-signin' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label for="">Username</label>
+                                            <input class="form-control" id="" type="text" name="username">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="">Password</label>
+                                            <input class="form-control" id="" type="password" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2 text-center">
+                                        <div class="col">
+                                            <input class="m-3 p-2 btn btn-light signinBtn" type="submit" value="Sign in">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="register-cta p-2">
+                            <p>First time user? <a href="{% url 'cryptoden:crypto-register' %}">Sign Up</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-c">
-                {% if form_type == 'signin' %}
-                <div class="signin-form">
-                    <h2>Sign in</h2>
-                    <form action="{% url 'cryptoden:crypto-signin' %}" method="POST">
-                        {% csrf_token %}
-                        <input type="text" name="username">
-                        <input type="password" name="password">
-                        <input type="submit" value="Sign in">
-                    </form>
-                    <p>First time user? <a href="{% url 'cryptoden:crypto-register' %}">Sign Up</a></p>
+            {% else %}
+            <div class="card-register">
+                <div class="container">
+                    <div class="signup-title p-3 mb-2"><h2>Sign up</h2><hr></div>
+                    <div class="register-form">
+                        <form action="{% url 'cryptoden:crypto-register' %}" method="POST">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <label for="">{{ field.label }}</label>
+                                    {{ field|add_class:"form-control" }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="row mb-2 text-center">
+                                <div class="col">
+                                    <input class="m-2 p-2 btn btn-light registerBtn" type="submit" value="Create User">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row p-2">
+                            <div class="col">
+                                <p>Already registered? <a href="{% url 'cryptoden:crypto-signin' %}">Sign in</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {% else %}
-                <div class="register-form">
-                    <h2>Sign up</h2>
-                    <form action="{% url 'cryptoden:crypto-register' %}" method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input type="submit" value="Register">
-                    </form>
-                    <p>Already registered? <a href="{% url 'cryptoden:crypto-signin' %}">Sign in</a></p>
-                </div>
-                {% endif %}
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}
