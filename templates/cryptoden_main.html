@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="logo"><a href="{% url 'cryptoden:crypto-main' %}"><h2>Textual Cryptography</h2></a></div>
             <ul class="menu-list navbar-nav">
-                <div class="icon cancel-btn">
+                <div class="icon cross-btn">
                     <i class="fas fa-times"></i>
                 </div>
                 {% if request.user.is_authenticated %}
@@ -25,7 +25,7 @@
                     <a class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-account' %}">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-logout' %}">Logout</a>
+                    <a id="logoutBtn" class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
@@ -34,7 +34,7 @@
                 {% endif %}
                 {% if not request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="signupBtn btn btn-light nav-link" href="{% url 'cryptoden:crypto-register' %}">Sign up</a>
+                    <a id="signupBtn" class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-register' %}">Sign up</a>
                 </li>
                 {% endif %}
             </ul>
@@ -94,5 +94,37 @@
         };
     </script>
     <script type="text/javascript" src="{% static 'js/cryptoden.js' %}"></script>
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menu = document.querySelector(".menu-list");
+        const menuBtn = document.querySelector(".menu-btn");
+        const crossBtn = document.querySelector(".cross-btn");
+
+        menuBtn.onclick = ()=>{
+            menu.classList.add("active");
+            navbar.classList.add("active");
+            menuBtn.classList.add("hide");
+        }
+
+        crossBtn.onclick = ()=>{
+            menu.classList.remove("active");
+            navbar.classList.remove("active");
+            menuBtn.classList.remove("hide");
+        }
+
+        function updateMenuClass() {
+            if (window.scrollY > 1) {
+                menu.classList.remove('active');
+                navbar.classList.remove("active");
+                menuBtn.classList.remove("hide");
+            }
+        }
+          
+        // Add initial class based on the scroll position on page load
+        updateMenuClass();
+        
+        // Add event listener to update the class when scrolling
+        window.addEventListener('scroll', updateMenuClass);
+    </script>
 </body>
 </html>
