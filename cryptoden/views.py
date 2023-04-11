@@ -50,13 +50,9 @@ def userRegister(request):
     if request.method == 'POST':
         form = CryptodenRegisterForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.save()
+            user = form.save()
             login(request, user)
             return redirect('cryptoden:crypto-main')
-        else:
-            messages.error(request, "Something went wrong :(")
         
     context = {
         'profile': profile,
@@ -67,9 +63,11 @@ def userRegister(request):
     return render(request, "cryptoden/signin_register.html", context)
 
 def userAccount(request):
-
     page = Page.objects.first()
     profile = Profile.objects.first()
+
+    if not request.user.is_authenticated:
+        return redirect('cryptoden:crypto-main')
 
     context = {
         'profile': profile,
