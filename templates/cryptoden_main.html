@@ -20,7 +20,7 @@
                 <div class="icon cross-btn">
                     <i class="fas fa-times"></i>
                 </div>
-                {% if request.user.is_authenticated %}
+                {% comment %} {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-account' %}">Account</a>
                 </li>
@@ -36,7 +36,7 @@
                 <li class="nav-item">
                     <a id="signupBtn" class="btn btn-light nav-link" href="{% url 'cryptoden:crypto-register' %}">Sign up</a>
                 </li>
-                {% endif %}
+                {% endif %} {% endcomment %}
             </ul>
             <div class="icon menu-btn">
                 <i class="fas fa-bars"></i>
