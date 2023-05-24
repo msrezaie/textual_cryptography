@@ -4,5 +4,5 @@
 staticfiles/uploads/documents/
 __pycache__/
 
-personal_portfolio/private.py
 personal_portfolio/__pycache__/settings.cpython-38.pyc
+textual_cryptography/private.py
