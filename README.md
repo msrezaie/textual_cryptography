@@ -18,7 +18,7 @@ http://cryptoden.pythonanywhere.com/
 
 ## Implementation
 
-This portfolio project is built using Django web framework and is hosted on PythonAnywhere. The media files, such as images, are stored in an AWS S3 bucket. The database models are stored in SQLite.
+The web app is built using Django web framework and is hosted on PythonAnywhere. The media files, such as images, are stored in an AWS S3 bucket. The database models are stored in SQLite.
 
 ### Packages Used
 
