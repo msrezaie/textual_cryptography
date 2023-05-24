@@ -98,6 +98,21 @@
                     </div>
                 </div>
                 <hr>
+                {% if request.user.is_authenticated %}
+                <div class="row">
+                    <div class="col-10">
+                        <div class="m-3">
+                            <h3>History</h3>
+                        </div>
+                    </div>
+                    <div class="col-2 text-center">
+                        <div class="">
+                            <h3>v</h3>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {% endif %}
                 <div class="row">
                     <div class="col-md">
                         <div class="m-3">

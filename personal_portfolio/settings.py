@@ -24,8 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['msrezaie.pythonanywhere.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = ['cryptoden.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
 
@@ -37,7 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
-    'base',
     'cryptoden.apps.CryptodenConfig',
     'storages',
     'cryptoden.ciphers',

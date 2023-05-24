@@ -15,25 +15,24 @@
                             <div class="signin-form">
                                 <form action="{% url 'cryptoden:crypto-signin' %}" method="POST">
                                     {% csrf_token %}
-                                    <div class="row">
+                                    {% for field in form %}
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label for="">{{ field.label }}</label>
+                                                {{ field|add_class:"form-control" }}
+                                                {% if field.errors %}
+                                                <div class="alert alert-danger">
+                                                    {% for error in field.errors %}
+                                                    <p>{{ error }}</p>
+                                                    {% endfor %}
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="row mb-2 text-center">
                                         <div class="col">
-                                            <div class="row mb-3">
-                                                <div class="col">
-                                                    <label for="">Username</label>
-                                                    <input class="form-control" id="" type="text" name="username">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col">
-                                                    <label for="">Password</label>
-                                                    <input class="form-control" id="" type="password" name="password">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2 text-center">
-                                                <div class="col">
-                                                    <input class="m-3 p-2 btn btn-light signinBtn" type="submit" value="Sign in">
-                                                </div>
-                                            </div>
+                                            <input class="m-3 p-2 btn btn-light signinBtn" type="submit" value="Sign in">
                                         </div>
                                     </div>
                                 </form>
@@ -56,19 +55,19 @@
                                 <form action="{% url 'cryptoden:crypto-register' %}" method="POST">
                                     {% csrf_token %}
                                     {% for field in form %}
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <label for="">{{ field.label }}</label>
-                                            {{ field|add_class:"form-control" }}
-                                            {% if field.errors %}
-                                            <div class="alert alert-danger">
-                                                {% for error in field.errors %}
-                                                <p>{{ error }}</p>
-                                                {% endfor %}
+                                        <div class="row mb-4">
+                                            <div class="col">
+                                                <label for="">{{ field.label }}</label>
+                                                {{ field|add_class:"form-control" }}
+                                                {% if field.errors %}
+                                                <div class="alert alert-danger">
+                                                    {% for error in field.errors %}
+                                                    <p>{{ error }}</p>
+                                                    {% endfor %}
+                                                </div>
+                                                {% endif %}
                                             </div>
-                                            {% endif %}
                                         </div>
-                                    </div>
                                     {% endfor %}
                                     <div class="row mb-2 text-center">
                                         <div class="col">

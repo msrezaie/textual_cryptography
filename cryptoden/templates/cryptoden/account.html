@@ -1,11 +1,19 @@
 {% extends 'cryptoden_main.html' %}
 
 {% block content %}
-    <div class="pattern-signin" style="background-image: url('{{ pages.background.url }}');">
-        <div class="container">
+<div class="pattern-signin" style="background-image: url('{{ pages.background.url }}');">
+    <div class="container">
         <div class="p-2"></div>
-        <div class="">
-            all user info, crud, usage history
+        <div class="card-signin">
+            <div class="row">
+                <div class="col-md">
+                    <div class="container">
+                        <h2>W£lc0m3</h2>
+                        <p>{{ request.user.username }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endblock content %}

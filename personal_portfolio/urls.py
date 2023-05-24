@@ -20,11 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('base.urls', namespace='base_app')),
-    path('projects/', include('cryptoden.urls', namespace='cryptoden_app')),
+    path('', include('cryptoden.urls', namespace='cryptoden_app')),
 ]
-
-handler404 = 'base.views.page_not_found'
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

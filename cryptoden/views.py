@@ -4,58 +4,79 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from . models import Operation, Page
-from . forms import CryptodenRegisterForm
-from base.models import Profile
+from . forms import CryptodenSigninForm, CryptodenRegisterForm
 import json
 import importlib
+
+# def userSignin(request):
+#     form_type = 'signin'
+#     page = Page.objects.first()
+#     profile = Profile.objects.first()
+
+#     if request.user.is_authenticated:
+#         return redirect('cryptoden:crypto-main')
+
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+
+#         try:
+#             user = User.objects.get(username=username)
+#         except:
+#             messages.error(request, "User does not exist!")
+
+#         user = authenticate(request, username=username, password=password)
+
+#         if user is not None:
+#             login(request, user)
+#             return redirect('cryptoden:crypto-main')
+#         else:
+#             messages.error(request, "Username/Password incorrect!")
+
+#     context = {
+#         'profile': profile,
+#         'pages': page,
+#         'form_type': form_type
+#     }
+#     return render(request, "cryptoden/signin_register.html", context)
 
 def userSignin(request):
     form_type = 'signin'
     page = Page.objects.first()
-    profile = Profile.objects.first()
 
     if request.user.is_authenticated:
         return redirect('cryptoden:crypto-main')
 
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        try:
-            user = User.objects.get(username=username)
-        except:
-            messages.error(request, "User does not exist!")
-
-        user = authenticate(request, username=username, password=password)
-
+    form = CryptodenSigninForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+        user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
             return redirect('cryptoden:crypto-main')
         else:
-            messages.error(request, "Username/Password incorrect!")
+            form.add_error(None, 'Username or password is incorrect')
 
     context = {
-        'profile': profile,
         'pages': page,
-        'form_type': form_type
+        'form_type': form_type,
+        'form': form
     }
     return render(request, "cryptoden/signin_register.html", context)
 
 def userRegister(request):
     form_type = 'register'
     page = Page.objects.first()
-    profile = Profile.objects.first()
     form = CryptodenRegisterForm()
-
-    if request.method == 'POST':
-        form = CryptodenRegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('cryptoden:crypto-main')
+    
+    form = CryptodenRegisterForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect('cryptoden:crypto-main')
         
     context = {
-        'profile': profile,
         'pages': page,
         'form_type': form_type,
         'form': form
@@ -64,13 +85,11 @@ def userRegister(request):
 
 def userAccount(request):
     page = Page.objects.first()
-    profile = Profile.objects.first()
 
     if not request.user.is_authenticated:
         return redirect('cryptoden:crypto-main')
 
     context = {
-        'profile': profile,
         'pages': page,
     }
     return render(request, "cryptoden/account.html", context)
@@ -108,10 +127,8 @@ def index(request):
 
     operation = Operation.objects.all()
     page = Page.objects.first()
-    profile = Profile.objects.first()
 
     context = {
-        'profile': profile,
         'operations': operation,
         'pages': page
     }
